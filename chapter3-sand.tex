@@ -1,0 +1,203 @@
+The System for on-Axis Neutrino Detection (SAND) is one of the three detectors of the Near Detector complex of the DUNE experiment. 
+SAND aims to monitor the beam on-axis, producing statistically significant measurements of the neutrino beam spectrum, to control systematic uncertainties for the oscillation analysis, to contribute to precisely measures neutrino cross-sections and to perform short-baseline neutrino physics studies.
+
+The SAND design (see Fig. \ref{fig:sand}) consists of a superconducting solenoidal magnet, which surrounds the Electromagnetic Calorimeter (ECAL), the Straw Tube Tracker (STT) and GRAIN, a LAr active target. Both the magnet with its iron yoke and the ECAL were originally part of the KLOE experiment, located at INFN LNF in Frascati. The STT and GRAIN replace the central tracker of KLOE. They will contribute to study the neutrino interaction models and to constrain nuclear effects.
+GRAIN (GRanular Argon for Interactions of Neutrinos) detector will be an active LAr target, located in the upstream region of SAND. It will perform tracking and calorimetric measurements through a novel imaging technique, exploiting the scintillation photons produced in LAr by the passage of a charged particle. 
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.17]{images/chap3/sand.png}} 
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap3/sand-section.png}} 
+    \caption{(a) Magnet and ECAL of the KLOE detector \cite{tesi-cicero}, (b) Sketch of SAND vertical cross-section \cite{tesi-vicenzi}.}
+    \label{fig:sand}
+\end{figure}
+
+In this chapter, the physics goals of SAND and its components will be presented. GRAIN will be discussed in greater detail in the last section, as it is the subject of this thesis work. If not otherwise specified, the  information presented here is sourced from the ND Conceptual Design Report \cite{nd_cdr} or the SAND proposal \cite{SAND-proposal}.
+
+\section{Physics goals}
+The main goal for SAND is the study of the neutrino interactions, the monitoring of the on-axis beam spectrum and of its variations over time. To accomplish this task, SAND must have a large enough target mass such that the neutrino interaction rate can provide a statistically significant feedback on changes in the beam over a period of a few days. All these measurements will be crucial to optimally describe the beam model and to extract the expected spectra at the Far Detector: it is important to know which are the causes that induce variations in the off-axis flux observed by ND-LAr and TMS/ND-GAr.
+
+SAND has several additional capabilities. In particular, it is able to measure independently the interaction rate and energy spectra of $\nu_\mu$ and $\nu_e$ of the neutrino beam and it can combine information from the ECAL and tracker to tag neutrons and measure their energy, improving the neutrino energy resolution.
+
+\subsubsection{Flux measurements}
+The SAND detector will perform measurements on the absolute and relative on-axis neutrino flux for the different components of the beam, through several physics processes. A precise knowledge of the fluxes is fundamental to unfold the different terms that appear in the calculation of the event rate at the ND, defined in Eq. \ref{ND_rate}. SAND will be able to determine absolute $\nu_\mu, \overline{\nu}_\mu$ and relative $\nu_\mu, \overline{\nu}_\mu, \nu_e, \overline{\nu}_e$ fluxes with excellent precision, in particular: %\cite{SAND-proposal}: 
+\begin{itemize}
+    \item absolute $\nu_\mu$ flux from $\nu + e \rightarrow \nu + e$ elastic scattering;
+    \item absolute and relative $\overline{\nu}_\mu$ flux from $\overline{\nu} + p \rightarrow \mu^+ + n$ quasi-elastic scattering on H with $Q^2 \approx 0$, since the $\sigma_{QE}$ is a constant determined by neutron $\beta$-decay with 1\% precision;
+    \item relative $\nu_\mu$ and $\overline{\nu}_\mu$ fluxes versus $E_\nu$ from $\nu(\overline{\nu}) + p \rightarrow \mu^\mp + p + \pi^\pm$ on H with $E_{\nu} < 0.5$ GeV;
+    \item relative $\overline{\nu}_\mu$ flux versus $E_\nu$ from $\overline{\nu} + p \rightarrow \mu^+ + n$ quasi-elastic scattering on H with $E_{\nu} < 0.25$ GeV.
+    \item ratio of $\overline{\nu}_\mu/\nu_\mu$ fluxes versus $E_\nu$ from coherent $\pi^-/\pi^+$ on C, measuring the ratio within the same beam polarity (neutrino or antineutrino mode) from coherent interactions on C (isoscalar) inside radiator targets;
+    \item ratio of $\nu_e/\nu_\mu$ and $\overline{\nu}_e/\overline{\nu}_\mu$ from $\nu(\overline{\nu})$ CC interactions on H and on CH\textsubscript{2} targets;
+    \item determination of parent $\mu/\pi/K$ distributions from $\nu(\overline{\nu})$ CC on H and CH\textsubscript{2} at low-$\nu$, that requires a fit of both $\nu_\mu$ and $\overline{\nu}_\mu$ distributions.
+\end{itemize}
+
+\subsubsection{Cross-section and nuclear effects}
+Nuclear effects due to the neutrino-nucleon interaction are a great source of uncertainties in the computation of the neutrino cross-sections. To tackle this problem, both ND and FD use a LAr target, thus reducing the uncertainties given by the theoretical models. %\cite{SAND-proposal}.  
+However, a comparison between these two detectors is complicated, mainly because of their different angular acceptance, that causes different energy spectra, and, in addition, not all the factors will cancel exactly. Understanding the nuclear smearing and constraining the corresponding uncertainties is crucial and it requires multiple nuclear targets different from Ar. Among these additional targets, almost all of them still rely on nuclear models to transfer measurements to Ar, except for Hydrogen. Neutrino interaction processes with H, indeed, are very well-known and can provide the missing information to reduce systematic uncertainties.
+
+SAND will contribute to this task by reducing systematic uncertainties and reconstructing events from Ar and H. A pure H target is problematic to build, but measuring the interactions on graphite (C) and plastic (CH\textsubscript{2}) targets makes it possible to study the neutrino interactions in a so-called \say{solid hydrogen} target, through a statistical subtraction. Because of the absence of the Fermi motion, the CC events are balanced in the transverse plane, hence the muon and the hadron are produced back-to-back in the same plane. In the case of interactions with heavy nuclei, instead, both initial and final states are affected by nuclear effects, so there is a missing transverse momentum and a smearing of the transverse plane kinematics.
+
+Assuming that the fluxes are precisely measured, the terms in Eq. \ref{ND_rate} are only $\sigma^m_{\nu_x}R^m_{\nu_x}\epsilon^m_{\nu_x}$. Given that Hydrogen has $R^H_{\nu_x} = 1$, a comparison between Ar and H interactions yields: 
+
+\begin{equation}
+    \frac{\mathcal{N}^{Ar}_{\nu_x}}{\mathcal{N}^H_{\nu_x}} = \frac{\sigma^{Ar}_{\nu_x}R^{Ar}_{\nu_x}\epsilon^{Ar}_{\nu_x}}{\sigma^H_{\nu_x}\epsilon^H_{\nu_x}}
+\end{equation}
+
+hence the product $\sigma^{Ar}_{\nu_x}R^{Ar}_{\nu_x}$ can be constrained, since the efficiency ratio is essentially defined by $\delta p/p$ (calibrated to 0.2\% from the $K_0$ mass peak) and $\sigma^H_{\nu_x}$ can be measured as explained above. This product, that has a large theoretical uncertainty, represents the probability for a final-state particle to be produced with momentum $p'$ from a neutrino with momentum $p$ that interacts with a nucleus. 
+
+\subsubsection{Precision measurements and nucleon structure investigation}
+The collected statistics and the precise determination of neutrino and antineutrino fluxes will allow DUNE to perform many precision measurements, complementary to the other attempts still ongoing at collider, fixed-target and nuclear physics experiments. 
+
+SAND will be able to determine the weak mixing angle $\sin^2 \theta_W$ from the ratio of NC and CC deep inelastic scattering (DIS) induced by neutrinos $\mathcal{R^\nu} = \sigma^\nu_{NC}/\sigma^\nu_{CC}$, that actually is dominated by theoretical systematic uncertainties on the structure functions of the target nucleons. Another independent measurement of this angle comes from NC $\nu_\mu e$ elastic scattering, extracting the ratio $\mathcal{R}_{\nu e}(Q^2) = \sigma(\overline{\nu}_\mu e \rightarrow \overline{\nu}_\mu e)/\sigma(\nu_\mu e \rightarrow \nu_\mu e)$. This channel is free from the hadronic uncertainties but its tiny cross section limits the statistics.% \cite{SAND-proposal}.
+
+The large statistic of $\nu(\overline{\nu}) - H$ interactions available gives the possibility to test the Adler sum rule $S_A = 0.5 \int_{0}^{1} dx/x (F_2^{\overline{\nu}p} - F_2^{\nu p}) = I_p$ \footnote{$F_2 = x(\frac{4}{9}u(x) + \frac{1}{9}d(x))$ where $x = \frac{Q^2}{2pq}$ with $Q = -q$. $q$ represents the momentum transferred by the mediator of the interaction to a parton whose momentum is a fraction $x$ of the total nucleon momentum $p$.}. The Adler sum, in the quark-parton model, is the difference between the number of valence \textit{u} and \textit{d} quarks of the target and gives the isospin of the target. The Adler sum is measured as a function of the transfer momentum $Q^2$ from the structure functions $F_2^{\overline{\nu}p}$ and $F_2^{{\nu}p}$. The measurement obtained from H can be compared with the one from C, for which $S_A = 0$. It can be also sensitive to possible variations of the isospin (charge) symmetry, heavy quark production (charm) and strange sea asymmetries $s - \overline{s}$.% \cite{SAND-proposal}. 
+
+For a better understanding of the nucleon structure, the strange quark contribution to the vector and axial-vector currents and to the spin $\Delta s$ of the nucleon is an important element. SAND will be able to determine the axial-vector form factor from a measurement of the NC elastic scattering off protons $\nu_\mu (\overline{\nu}_\mu) p \rightarrow \nu_\mu (\overline{\nu}_\mu) p$. Indeed, the NC differential cross-section is proportional to the axial-vector form factor $d^2\sigma / dQ^2 \sim (-G_A/2 + G^s_A/2)^2$, where $G_A$ is the known axial form factor and $G_A^s$ is the strange form factor. This process can also provide the most direct measurement of $\Delta s$, by extrapolating the NC differential cross-section to $Q^2 = 0$, since in this limit $G^s_A \rightarrow \Delta s$. $G_A$ can be determined by the combined measure of $\mathcal{R}_{\nu p} (Q^2)$ and $\mathcal{R}_{\overline{\nu} p} (Q^2)$, where $\mathcal{R}_{\nu p}(Q^2) = \sigma({\nu}_\mu p \rightarrow {\nu}_\mu p)/\sigma(\nu_\mu n \rightarrow \mu^- p)$.% \cite{SAND-proposal}.
+
+The possibility to integrate several thin nuclear targets inside STT allows for a deep study of the nuclear structure with the related nuclear effects on structure functions, form factors and cross sections.% \cite{SAND-proposal}.
+
+\section{SAND components}
+\label{sand-components}
+\subsection{Magnet and iron yoke}
+The design of the SAND detector features a solenoidal superconducting magnet (see Fig. \ref{fig:magnet}), taken from the KLOE detector at the DA$\Phi$NE collider, which operated until 2008 at the INFN LNF laboratory \cite{KLOE-article}. This magnet was designed together with its iron yoke, and produces 0.6 T over a 4.3-m long, 4.8-m diameter volume. The coil operates at a nominal current of 2092 A and its stored energy is 14.32 MJ. It is a two-layer conductor, a composite of an (Nb-Ti) Rutherford cable co-extruded with high-purity aluminium, wound on flat with a full vacuum-impregnated insulation system. The coil is located inside a cryostat, which has an outer diameter of 5.76 m, an inner diameter of 4.86 m, 4.40 m length,  and an overall cold mass of $\sim 8.5$ ton. The return yoke, weighting 475 ton, surrounds the cryostat.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.23]{images/chap3/magnet2.png}} 
+    \subfigure[]{\includegraphics[scale=0.45]{images/chap3/magnet1.png}} 
+    \caption{The KLOE detector: (a) 3D engineering CAD model of the magnet and (b) vertical cross section \cite{KLOE-det}.}
+    \label{fig:magnet}
+\end{figure}
+
+The coil cooling is done through thermo-siphoning cycles: gaseous He at 2.5 K is inserted at 3 bar from the cryogenic plant and melted through Joule-Thomson valves into a liquid He container in thermal contact with the coil. The current leads are cooled with liquid He, while the radiation shields are cooled with gaseous He at 70 K \cite{nd_cdr}.
+
+\subsection{Electromagnetic calorimeter (ECAL)}
+In the SAND design, the ECAL also comes from the already existing calorimeter of the KLOE detector. The KLOE ECAL is a lead-scintillating fiber calorimeter, read out by photomultiplier tubes. Scintillating fibers ensure a good light transmission over several meters, sub-nanosecond time accuracy and a very good hermeticity. The calorimeter cylindrical barrel (see Fig. \ref{fig:ECAL}) is placed inside the KLOE magnet, close to the coil cryostat. It consists of 24 modules, each of dimensions 4.3 m (length) $\times$ 23 cm (thickness) and with a trapezoidal cross section, with bases of 52 and 59 cm. Each end cap is formed of 32 vertical modules that are 0.7$-$3.9 m long and 23 cm thick, with a rectangular cross section of variable width. The modules are stacked in groups of 200 grooved lead foils, with 0.5 mm of thickness, which alternate with 200 layers of cladded 1-mm diameter scintillating fibers. The endcap modules are bent at the upper and lower ends to permit the positioning into the barrel calorimeter and also to place the phototube axes parallel to the magnetic field. The KLOE calorimeter has no inactive gap between its components since there is a large overlap of barrels and end-caps. Its total weight is $\sim 100$ ton and the read-out system is equipped with 4880 phototubes \cite{KLOE-det}.
+
+The ECAL energy and time resolutions, measured in the KLOE commissioning and operating phases, are: %\cite{KLOE-det}:
+\begin{itemize}
+    \item spatial resolution in $r - \phi$: $\sim 1.3$ cm;
+    \item energy resolution: $\sigma_E/E = 5\%/\sqrt{E\text{ (GeV)}}$;
+    \item time resolution: $\sigma = 54/ \sqrt{E\text{ (GeV)}}$ ps.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{images/chap3/ECAL.png}
+    \caption{A view of the KLOE calorimeter: the far end-cap is closed and ECAL modules can be seen as vertically oriented slabs \cite{nd_cdr}.}
+    \label{fig:ECAL}
+\end{figure}
+
+\subsection{Straw tube tracker (STT)}
+The Straw Tube Tracker (STT) will be a target-tracker for neutrino interactions, performing precise measurements of all charged particles' momentum. Its building requirements are derived from its physics goals. In particular, it has low density and high track sampling, to ensure optimal momentum, angular and spatial resolution, and its total thickness is comparable to the radiation length, such that the secondary interactions are minimized. In order to study neutrino-nucleon interactions, it has the possibility to house different target materials. The STT can perform particle identification of $e^\pm, \pi^\pm, K^\pm, p, \mu^\pm$, together with the calorimeter, and it has enough target mass to collect sufficient statistics to measure neutrino flux. 
+
+The STT system is divided into modules, and each can be operated independently using different nuclear targets (such as C, Ca, Fe, Pb...). Its technology is based on low-mass straws, made of 20 $\mu$m gold-plated tungsten wires, placed inside tubes with 5 mm diameter, walls of 12 $\mu$m and 70 nm of Al coating. They are filled with a gaseous mixture of Xe/CO\textsubscript{2} 70/30 operated at $\sim$ 1.9 atm. The single point resolution is designed to be $< 200$ $\mu$m.% \cite{nd_cdr}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.22]{images/chap3/stt.png}
+    \caption{STT module scheme, with three main elements (left to right): a tunable polypropylene CH\textsubscript{2} target; a radiator with 119 polypropylene foils for $e^\pm$ ID; four straw layers XXYY (beam along $z$ axis and B field along $x$ axis). (Distances in mm) \cite{nd_cdr}.}
+    \label{fig:STT1}
+\end{figure}
+At the time of writing this thesis the STT design is not optimized yet. In the latest design, it is planned with three types of STT modules.
+
+The first type of module is a polypropylene CH\textsubscript{2} target slab followed by a radiator and four straw layers XXYY, as in Fig. \ref{fig:STT1}. The slab has a thickness of 5 mm. The radiator consists of 105 18-$\mu$m thick foils of polypropylene (CH\textsubscript{2}H\textsubscript{6})\textsubscript{n}, separated by 117 $\mu$m of air gaps. It is 15.95~mm thick and, using the transition radiation emission, it will be able to perform an optimal $e/\pi$ differentiation. This STT configuration contains 6.98~mm of CH\textsubscript{2} overall, that corresponds to $\sim 1.5\%$ of the radiation length.
+The second type of STT module is composed of a graphite (C) target and four straw layers XXYY, as shown in Fig. \ref{fig:stt2-3}.a. The C target is 4~mm thick, that corresponds to the same $X_0$ percentage of the first module type. It will allow us to measure the C background in the selection of Hydrogen interactions in C\textsubscript{3}H\textsubscript{6} target. Modules with graphite are usually alternated with CH\textsubscript{2} modules to have the same detector acceptance for both targets.
+
+The third STT module type, the \say{tracking module} (see Fig. \ref{fig:stt2-3}.b) consists simply of 6 straw layers fixed together with a XXYYXX configuration. 
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.17]{images/chap3/stt2.png}} 
+    \subfigure[]{\includegraphics[scale=0.17]{images/chap3/stt3.png}} 
+    \caption{(a) Section of the graphite module with the radiator and the CH\textsubscript{2} slab replaced by a graphite target; (b) Section of the tracking module with six straw layers. (Distances in mm) \cite{tesi-cicero}.}
+    \label{fig:stt2-3}
+\end{figure}
+
+In total, the STT system contains 70 modules with CH\textsubscript{2}, slabs and radiators, 8 with C targets and 6 tracking modules. As shown in Fig. \ref{fig:sand}, it occupies all the SAND volume, except for the upstream region, dedicated to the LAr target (GRAIN). The tracking modules are located close to GRAIN and in the downstream region, while the graphite and CH\textsubscript{2} modules are alternated, filling the inner volume.
+
+\section{GRAIN}
+The GRanular Argon for Interactions of Neutrinos (GRAIN) detector is a $\sim$ 1 ton LAr active target. It has the goal of constraining systematic uncertainties from nuclear effects through inclusive Ar interactions. It will be located in the upstream region of the SAND magnetized volume and will be always on-axis, allowing cross-calibration with the other detectors.\\ 
+The GRAIN design foresees two coaxial cylindrical vessels, with a highly elliptical base, arranged such that the neutrino beam is aligned with the shorter axis of the ellipse, as shown in Fig. \ref{fig:vessel}. The inner vessel is 150~cm wide, with a major axis of 146.5~cm and a minor axis of 46.5~cm. It is made of stainless steel, 6~mm thick in the curved walls and 20~mm at the endcaps, where flanges are placed to insert the cables of the readout electronics. It is filled with liquid Argon. The outer vessel is 200~cm long, with axes of 190 cm $\times$ 83 cm. It is composed of a double shelled 6-mm thick Carbon fiber and 40~mm honeycomb structure, reinforced with an aluminium alloy along the ellipse profile. Between the two vessels there is vacuum, maintained at the pressure of $10^{-4} - 10^{-5}$ bar to thermally insulate the inner vessel. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{images/chap3/vessel.png}
+    \caption{Design of the lateral projections of the GRAIN inner and outer vessels with detailed dimensions \cite{tesi-cicero}.}
+    \label{fig:vessel}
+\end{figure}
+
+The design aims at minimizing the vessel material, that has a thickness of a small fraction of radiation length. To reduce energy loss, showering and multiple scattering, the overall depth of the LAr volume is kept to a minimum (1 interaction length). 
+
+Tipically, a LAr-based detector utilizes a TPC technology for tracking and reconstruction. In this context, however, there are some limitations to the construction of a LArTPC: the primary concern is that at the ND the number of events and the pile-up are too high to be managed by a traditional TPC because the drift time of the ionization charges is $\sim \mathcal{O}(\text{ms})$. One possible solution is to design a detector similar to the ND-LAr, with modular small LArTPCs. However, we are currently studying a different approach: a novel tracking and calorimetry system that is entirely based on the imaging of LAr scintillation light.
+
+This idea comes from the bubble chambers detection technique: charged particles crossing a superheated liquid deposit some of their energy, inducing the liquid to vaporize, with a subsequent formation of microscopic bubbles along the particle trajectory. This event is captured by several photographic cameras placed all around the chamber, allowing for a 3D reconstruction of the event. In the same way, charged particles, crossing  liquid Argon, deposit energy causing ionization and excitation of the Ar atoms. After the excitation, there is emission of scintillation light, that can be captured by pixel-segmented photon detectors placed on the inner walls and immersed in Ar. Despite the simplicity of this idea, it presents many challenges, such as the need for an imaging system that is able to work in a cryogenic environment and that is sensitive to the wavelength of the photons emitted by Ar. 
+
+LAr properties and imaging systems proposed are outlined in the following section. In Sec. (\ref{simulation-section}), the reconstruction technique and the simulation chain will be presented. In particular, a detailed description of the tracking performance of the detector, with the reconstruction implementation and the optimization of camera geometries is discussed in \cite{tesi-cicero}; while calorimetry studies using the same imaging system are presented in \cite{tesi-pia}.
+
+\subsubsection{LAr properties}
+\label{LAr-prop}
+In the experiments of the neutrino and Dark Matter sector, Liquid Argon is commonly chosen as an active medium, mainly because it has an optimal charge yield and transport and good scintillation properties. The photon emission process of LAr is due to the decay to the ground state of the $\text{Ar}^*_2$ excimer: precisely, the lowest-lying single state, \textsuperscript{1}$\Sigma^+_u$, and the triplet state, \textsuperscript{3}$\Sigma^+_u$ decay emitting scintillation photons of $\sim 9.7$ eV in 7 ns and 1.6 $\mu$s, respectively. Due to the different lifetimes of these two states, the singlet is considered as the \textit{fast} component, while the triplet as the \textit{slow} component \cite{LAr-theory}. As clearly shown in Fig. \ref{fig:signal-Ar-light}, the particle type affects the relative abundance of the two components, allowing particle identification. The typical light yield in LAr is $\sim 40$k photons per MeV of deposited energy. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.40]{images/chap3/signal shape Ar scintillation.png}
+    \caption{Signal shape of scintillation light in LAr for gammas (green) and neutrons (magenta). The peaks are due to the fast component, while the tails come from the slow one \cite{Scint-Ar}.}
+    \label{fig:signal-Ar-light}
+\end{figure}
+
+Many experiments measured the typical wavelength of scintillation photons, which is not related to the time components, obtaining a value of about 127 nm, in the vacuum ultraviolet (VUV) range. Although LAr shows an excellent light yield and transparency to its own scintillation light, quenching and absorption caused by possible impurities worsen its performance. In particular, quenching processes reduce the number of $\text{Ar}^+_2$ molecules by non-radiative decay in two-body collisions with impurity molecules such as N\textsubscript{2} and O\textsubscript{2}. For example, the absorption processes due to the presence of Oxygen cause the formation of atomic metastable states, that emit their excitation energy as heat.
+
+The only interaction that scintillation photons undergo is the Rayleigh scattering, where there is no direct loss of light yield but only a change of direction. However, this is a problem since it leads to a larger absorption and scattering probability that make the reconstruction process more complicated. According to the results presented in \cite{Ar-rayleigh}, the scattering length is about $\lambda_{RS} = 99.1 \pm 2.3$ cm, derived from the measured propagation group velocity of scintillation light in LAr. The scattering length is related to the wavelength of the photons, as $\lambda_{RS} \propto \lambda^4$, hence it can be increased using a wavelength shifter. This is usually accomplished by doping the LAr with a small amount of Xenon: as presented in \cite{Xe-doping}, the photons emitted in Xenon-doped liquid Argon have a spectrum peaked at 178 nm leading to a scattering length of several meters.
+
+GRAIN, which is provided with LAr, will be able to deal with the high ND expected event rate thanks to its imaging system that, collecting the fast component light, has a time response of a few hundreds of ns. The scattering length of about 1 m, instead, can affect the measure at the GRAIN scale, hence some precautions have to be considered. As explained before, a possible solution, currently under study, is Xe-doping, that can reduce the scattering and increase the light collection with an improvement of the detector's efficiency. In this thesis, the analysis is carried on without considering any doping in LAr.
+
+\subsubsection{Imaging system}
+The imaging system design is very challenging since it has to fulfill all the requirements needed in GRAIN, such as a good spatial resolution. The already-known possibilities are conventional lenses, that have relatively poor transmissivity to VUV light or mirror-based optics, which have too large dimensions, thus reducing the fiducial volume of GRAIN. The imaging system must collect enough light and must be provided with adequately segmented photosensors, to guarantee a good resolution. In addition, its electronic component must be able to operate in a cryogenic environment, having also the ability to detect single photons and an adequate bandwidth and digitization system to resolve multiple interactions per spill. 
+
+The photodetection system is based on matrices of Silicon Photomultipliers (SiPMs). SiPMs have great single-photon sensitivity and some commercial models can operate at cryogenic temperatures, where the presence of dark noise is reduced.  On the other hand, these commercial models have a very low sensitivity to the wavelength of scintillation photons emitted in LAr. To mitigate this problem, a wavelength-shifter (WLS) coating covers the sensors, shifting the UV light into the visible range. The chosen material is tetraphenyl butadiene (TPB), an organic compound that, when excited by UV radiation, emits photons through the fluorescence process. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{images/chap3/SiPM-PDE.png}
+    \caption{Photon detection efficiency (PDE) versus wavelength of incident light of SiPM model Hamamatsu S14160 series \cite{SiPM-hamamatsu}.}
+    \label{fig:SiPM-PDE}
+\end{figure}
+
+The fluorescence photon spectrum has a peak at 430 nm \cite{SiPM-hamamatsu}, being perfectly suitable for the PDE spectrum of SiPMs (see Fig. \ref{fig:SiPM-PDE}), and that does not change with the wavelength of incident light in the UV range. The fluorescence photons are emitted isotropically, i.e. half of them are sent back in the detector volume. VUV-dedicated commercial models can be another option that is expected to be available in the near future.
+
+The readout electronics, located inside the Argon volume, must provide information on the arrival time and the number of the incident photons.
+The design provide a photosensor that consists of a matrix of 32$\times$32 SiPMs, that ensures a relatively high resolution in the reconstruction process. The PDE is set to 25\% to take into account the back propagation of half of the photon in the volume. For the design of this imaging system, two approaches can be pursued. One possible scenario, which is currently under study, uses a novel lens-based system. This system utilizes two plano-convex lenses made of high purity non-crystalline fused silica glasses, that are reasonably VUV-transparent, with a separating volume filled with Nitrogen. 
+The lenses require a LAr-Xe mixture inside GRAIN that produces scintillation light at 175 nm, focused between 40 - 120 cm. They are located in front of a 1024-pixel SiPM arrays of 2$\times$2 $\text{mm}^2$ area, forming the so-called camera, that has a 6~cm diameter and a 12~cm depth. In Fig. \ref{fig:lenses}, a design of GRAIN with 53 cameras is displayed. Several studies are still ongoing on this kind of system, and it will not be detailed in this thesis.
+%guardare sull'indico del cern
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.35]{images/chap3/lens-grain-vol.png}
+    \caption{Design of GRAIN detector with lens-based imaging system.}
+    \label{fig:lenses}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \subfigure[]{\includegraphics[scale=1.2]{images/chap3/random-mask.png}} 
+    \subfigure[]{\includegraphics[scale=1.2]{images/chap3/MURA.png}} 
+    \caption{(a) Random-pattern 32$\times$32 mask; (b) MURA 31$\times$31 mask.}
+    \label{fig:patterns}
+\end{figure}
+
+The other approach is a mask-based imaging system. Here, the scintillation light coming from LAr passes through coded aperture masks, sheets of opaque material that present a well-defined pattern of square holes, located at a fixed distance in front of the SiPMs. The simple construction process and the absence of transparency requirements on the material choice are among the advantages of this approach. In addition, with a proper optimization of their pattern and of their size, the cameras can be very compact, roughly $2-5$ cm of thickness with a wide field of view, therefore providing a larger fiducial volume for the same cryostat size. Their main drawback is the complexity of the reconstruction process, since the image formed on the sensor is a superposition of images from each aperture. Indeed, the reconstruction technique is based on the back-propagation of the photons through the mask holes, weighting on all the possible combinations. 
+
+\begin{figure}[ht]
+    \centering
+    \subfigure[]{\includegraphics[scale=0.3]{images/chap3/grain-vol.png}}\hfil    \subfigure[]{\includegraphics[scale=0.27]{images/chap3/side-mask.png}}
+    \caption{(a) Design of the GRAIN volume with 60 coded aperture cameras; (b) Scheme of the side view of a camera.}
+    \label{fig:grainvol-sideview}
+\end{figure}
+
+Studies on this technique have been carried out to find the number of cameras, the placement, the sensor size and the pattern for which we have the best reconstruction performance \cite{tesi-cicero}. The possible pattern options for GRAIN, presented in Fig. \ref{fig:patterns}, were random patterns and MURAs (Modified Uniformly Redundant Arrays), particular patterns with prime-number rank used in other fields that employ Coded Aperture imaging. A comparison between them indicated a similar performance. As they have no requirements on the matrix rank, random-pattern masks were chosen and used in the simulations. In Fig. \ref{fig:grainvol-sideview}.a, the design of the GRAIN volume is presented, with 60 cameras, where each camera is composed of a mask in front of a sensor, as Fig. \ref{fig:grainvol-sideview}.b shows. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

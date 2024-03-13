@@ -1,0 +1,666 @@
+\section{Neutrino in Standard Model}
+\label{sm_neutrinos}
+The Standard Model (SM) of particle physics is a gauge theory, based on the QFT framework, obtained from the composition of three local gauge symmetries: $SU(3)_{C} \times SU(2)_{L} \times U(1)_{Y}$, where the labels $C,L,Y$ denote colour, left-handed chirality and weak hypercharge. It describes three out of the four fundamental interactions: the strong, the weak and the electromagnetic interaction, except gravity. In particular, $SU(3)_{C}$ describes the strong interaction, $SU(2)_{L}$ the weak interaction, and the electromagnetic $U(1)_{QED}$ is hidden inside $U(1)_{Y}$.
+
+The SM is based upon the idea that the matter is made up of fermions, spin-1/2 point-like particles, that interact through fields, that have integer-spin particles associated, called bosons \cite{cottingham_greenwood_2007}.
+Fermions are divided into two sectors, quarks and leptons, and, in each sector, the constituents are arranged as follows: 
+\[
+\begin{pmatrix} e^{-} \\ \nu_e \end{pmatrix} \;
+\begin{pmatrix} \mu^{-} \\ \nu_{\mu} \end{pmatrix} \;
+\begin{pmatrix} \tau^{-} \\ \nu_{\tau} \end{pmatrix}, \;
+\begin{pmatrix} u \\ d \end{pmatrix} \;
+\begin{pmatrix} c \\ s \end{pmatrix} \;
+\begin{pmatrix} t \\ b \end{pmatrix} \;\]
+Quarks feel all the three interactions of SM; electrons, muons and taus feel only the weak and the electromagnetic ones.
+
+Neutrinos inside the SM are neutral and massless fermions and can interact only weakly. They were hypothesized by W. Pauli in 1931 and then observed for the first time by Reines and Cowan in 1956. They are part of the lepton doublet $L_L = \begin{pmatrix} l \\ \nu_l \end{pmatrix}_L$, where the subscript $L$ denotes the left-handed component of the fermion. Considering only $\nu_{l_L}$ by assumption, neutrinos in SM are massless.
+Their interactions can be mediated by a neutral current, through $Z^0$ boson, or a charged current, with $W^\pm$. The correspondent lagrangians are:
+
+\begin{equation}
+\label{cc_lagrangian}
+    \mathcal{L}^{CC}_{I,L} = -\frac{g}{\sqrt{2}}\sum_{\alpha = e,\mu,\tau} \overline{l}_{\alpha_L}\gamma^{\mu} \nu_{\alpha_L} W^{-}_{\mu} + \text{H.c.},
+\end{equation}
+\begin{equation}
+\label{nc_lagrangian}
+    \mathcal{L}^{NC}_{I,L} = -\frac{g}{2cos\theta_W}\sum_{\alpha = e,\mu,\tau} \overline{\nu}_{\alpha_L} \gamma^{\mu} \nu_{\alpha_L} Z^0_\mu
+\end{equation}
+
+where \textit{g} is the coupling associated with the electro-weak $SU(2)_L$ interaction and $\theta_W$ is the Weinberg angle.
+
+The SM provides three generations of neutrinos, observed in 1956 ($\nu_e$), in 1962 ($\nu_\mu$) and in 2000 ($\nu_\tau$). This is justified basically by two facts:
+\begin{enumerate}
+    \item $Z$-boson decay: $Z$ boson decays 70\% of the time into hadrons, 10\% into charged leptons and 20\% into neutral leptons, i.e. neutrinos, where the  \say{invisible} part is predicted to be twice than the charged leptons' ones. 
+    This was measured at LEP \cite{pdg:2022ynf}, and the resulting number of neutrino types was: 
+    
+    \begin{equation*}
+        N_\nu = \frac{\Gamma_{inv}}{\Gamma_l}\left(\frac{\Gamma_l}{\Gamma_\nu}\right)_{SM} = 2.984 \pm 0.008
+    \end{equation*}
+    
+    The observation of this fact confirmed the existence of three flavours of neutrinos, below $m_0/2 = 45$ Mev/c\textsuperscript{2}. 
+    \item Influence on cosmic signals of neutrinos produced during the first seconds after the Big Bang: three generations of neutrinos are indeed consistent with the explanation of the ratio of light elements, with the description of the fluctuations of the cosmic microwave background and with the pattern of the baryon acoustic oscillations.
+\end{enumerate}
+
+However, the flavour oscillation of neutrinos has been discovered for many years, and massive neutrinos are needed to explain this phenomenon. For this reason, it is necessary to go beyond the SM theory, as we will see in Sec. \ref{BSM}.
+
+\section{Neutrinos beyond Standard Model}\label{BSM}
+% \subsection{Discovery of neutrinos oscillation}\label{hist_oscill}
+%SNO experiment \cite{SNO_flux}
+The SM is the most complete theory in describing the particle physics world and in making predictions, but it fails to explain some observed phenomena. For example, one such phenomenon is the experimental evidence of the neutrino oscillation. It was first hypothesized in 1967 by Pontecorvo \cite{Pontecorvo-idea} before the unexpected results of the Homestake experiment \cite{Homestake} and definitely claimed in 1998 thanks to the studies of Super-Kamiokande on atmospheric neutrinos \cite{SK-oscill-confirm}. The discovery of neutrino oscillations was a breakthrough in particle physics since it can be explained only by assuming that neutrinos have mass, that is in contrast with the SM predictions. Hence, this opened the era of the \say{new physics}, for which a Beyond the Standard Model (BSM) theory is needed. Indeed, this observation led to a lot of still open questions: the absolute mass scale of neutrinos, the mechanism through which they gain mass and the reason why it is so small compared to the other particles. In the next sections, some theories on neutrino mass are outlined. 
+
+\subsection{Neutrino masses}
+\subsubsection{Dirac mass}
+The Dirac lagrangian for a free fermion is: 
+
+\begin{equation}
+    \mathcal{L}_D = \overline{\nu}_Li\slashed{\partial}\nu_L + \overline{\nu}_Ri\slashed{\partial}\nu_R - m(\overline{\nu}_L\nu_R + \overline{\nu}_R\nu_L)
+\end{equation}
+
+where $\slashed{\partial} \equiv \gamma^\mu \frac{\partial}{\partial x^\mu}$. Here, the lagrangian is written in chiral components, such that $\nu_{R/L} = P_{R/L}\nu = \frac{1\pm\gamma_5}{2}\nu$. As said before, in the SM, only $\nu_L$ are considered by assumption, so the mass term vanishes.
+Anyway, since all the fermions in SM have both left and right components, the simplest way to give mass to neutrinos is using an extension of the Higgs' mechanism, introducing a right-handed neutrino $\nu_R$ and describing the particle through a four-component spinor:
+
+\begin{equation*}
+    \nu =  
+\begin{pmatrix}
+   \psi_R \\ \psi_L
+\end{pmatrix} = 
+\begin{pmatrix}
+   \psi_{R1} \\ \psi_{R2} \\ \psi_{L1} \\ \psi_{L2}
+\end{pmatrix}
+\end{equation*}
+
+So, defining a modified Higgs field $\Tilde{\Phi} = i\sigma_2 \Phi^*$, with $\Phi = \frac{1}{\sqrt{2}} \begin{pmatrix}
+        0 \\ v + H
+    \end{pmatrix},$
+we can rewrite the Lepton-Higgs Yukawa lagrangian as: 
+
+\begin{equation}
+\label{yuk_L}
+    \mathcal{L}_{H,L} = -\left(\frac{v+H}{\sqrt{2}}\right)\left[\overline{l}'_LY'^ll'_R + \overline{\nu}'_LY'^\nu\nu'_R\right] + \text{H.c.}
+\end{equation}
+
+Changing basis of lepton fields, with a unitary matrix $V$, $Y'$ becomes diagonal, yielding to: 
+
+\begin{equation}
+\label{yuk_L_mass}
+    \begin{aligned}
+    \mathcal{L}_{H,L} & = -\left(\frac{v+H}{\sqrt{2}}\right)\left[\overline{\bm{l}}_LY^l\bm{l}_R + \overline{\bm{n}}_LY^\nu \bm{n}_R\right] + \text{H.c.} = \\ & = -\left(\frac{v+H}{\sqrt{2}}\right)\left[\sum_{\alpha = e,\mu,\tau}y^l_\alpha\overline{l}_{\alpha L}l_{\alpha R} + \sum_{k = 1}^3 y^\nu_k\overline{\nu}_{kL}\nu_{kR}\right] + \text{H.c.} = \\
+    & = - \sum_{\alpha = e, \mu, \tau} \frac{y^l_\alpha v}{\sqrt{2}} \overline{l}_\alpha l_\alpha - \sum_{k=1}^3 \frac{y^\nu_k v}{\sqrt{2}} \overline{\nu}_k \nu_k - \sum_{\alpha = e, \mu, \tau} \frac{y^l_\alpha}{\sqrt{2}} \overline{l}_\alpha l_\alpha H - \sum_{k=1}^3 \frac{y^\nu_k}{\sqrt{2}} \overline{\nu}_k \nu_k H,
+    \end{aligned}
+\end{equation}
+
+where $V^{l\dag}_{L/R} \bm{l}'_{L/R} = \bm{l}_{L/R}, V^{\nu \dag}_{L/R}\bm{\nu}'_{L/R} = \bm{n}_{L/R}$ and charged lepton and neutrino masses are respectively $m_l = y^l_\alpha v/\sqrt{2}$ and $m_\nu = y^\nu_k v/\sqrt{2}$. It can be observed that the lepton - Higgs coupling is proportional to the lepton mass. 
+
+\subsubsection{Majorana mass}
+A massless neutrino can be described by a Weyl spinor. However, in 1937 Majorana \cite{Majorana} showed that also a massive neutrino can be described by a two-component spinor $\nu$, if $\nu_L$ and $\nu_R$ are not independent:
+
+\begin{equation*}
+    \nu_R = \nu^C_L = \mathcal{C}\overline{\nu}_L^T \rightarrow \nu = \nu^C 
+\end{equation*}
+
+with the spinor: 
+
+\begin{equation*}
+    \nu =  
+\begin{pmatrix}
+   i \sigma_2 \chi^*_L \\ \chi_L
+\end{pmatrix} = 
+\begin{pmatrix}
+   \chi^*_{L2} \\ -\chi^*_{L1} \\ \chi_{L1} \\ \chi_{L2}
+\end{pmatrix}
+\end{equation*}
+
+The Majorana equation is:
+
+\begin{equation}
+    i\slashed{\partial}\nu_L = m \nu^C_L 
+\end{equation}
+
+and the correspondent lagrangian is: 
+
+\begin{equation}
+\label{major_L}
+    \mathcal{L}^M = \overline{\nu}_L i\slashed{\partial}\nu_L - \frac{m}{2}(\overline{\nu}^C_L\nu_L + \overline{\nu}_L\nu^C_L)
+\end{equation}
+
+The mass term in Eq. \ref{major_L} clearly violates the lepton number conservation ($\Delta L = \pm 2$) and so a BSM theory is needed to explain how neutrinos gain mass \cite{giunti_kim_fundamental}.
+
+
+\subsection{Experimental mass measurements}
+\subsubsection{$\beta$ decay experiments}
+Electron neutrino mass can be measured by observing the electron energy spectrum in a $\beta$-decay. If $m_{\nu_e}$ is small, its effect on the electron spectrum is maximal at the end-point of the spectrum, where the events are very rare. To maximize the fraction of decay events that occur in this region, it is better to use a reaction with the smallest $Q$-value possible. The best reaction for this goal is the tritium $\beta$-decay, \textsuperscript{3}H $\rightarrow$ \textsuperscript{3}He $+ e^- + \overline{\nu}_e$, since it has one of the smallest $Q$-value among all known $\beta$-decays. 
+For these measurements, it's useful to define the so-called \say{Kurie function}: 
+
+\begin{equation}
+\label{Kurie-eq}
+    K(T) = \left[(Q_\beta - T)\sqrt{(Q_\beta - T)^2 - m^2_{\nu_e}}\right]^{1/2}
+\end{equation}
+
+where $Q = M$(\textsuperscript{3}H)$ - M$(\textsuperscript{3}He)$- m_e = 18.58$ keV. \\
+If $m_{\nu_e} = 0$, then $K(T)|_{m_{\nu_e}=0} = Q_\beta - T$, that is a linear relation on $T$. While, if the mass is non-null, there is a deviation from the linear function, as can be seen in Fig. \ref{fig:Kurie-plot}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.3]{images/chap1/Kurie-plot.png}
+    \caption{Tritium Kurie plot, near to the end-point, computed for neutrino masses of 0 eV and 20 eV \cite{Kurie-plot}.}
+    \label{fig:Kurie-plot}
+\end{figure}
+
+As explained in Sec. \ref{neutrino-mixing}, neutrinos can be seen as a superposition of different mass eigenstates, but in this context, the electron neutrino is considered as a mass eigenstate. A similar, but more complex, analysis can be carried out considering the neutrino mixing.
+Such a precise measurement is extremely challenging, therefore, only an upper limit on the value of $m_{\nu_e}$ has been obtained. The strongest constraint, given by the KATRIN experiment, that combined two data-taking campaigns, is $m_{\nu_e} < 0.8$ eV at 90\% C.L. \cite{KATRIN}\\
+This reaction, however, can't solve the neutrino Dirac or Majorana nature since the effect of neutrino mass for this method is due to a kinematical relation that is satisfied by both fields.
+
+\subsubsection{Neutrinoless double $\beta$ decay experiments}
+Neutrinoless double $\beta$ decay ($2\beta_{0\nu}$-decay) is the golden channel to measure neutrino mass and to test if they are Majorana particles. \\
+Double $\beta$ decay ($2\beta_{2\nu}$) is the following process:
+
+\begin{equation}
+\label{double-decay}
+    \mathcal{N}(A,Z) \rightarrow \mathcal{N}(A,Z \pm 2) + 2e^\pm + 2\overset{(-)}{\nu_e}.
+\end{equation}
+
+where $(A,Z)$ are the mass number and the atomic number of the nucleus, respectively. It is a second-order process in the perturbative expansion of weak interactions in the SM, hence it is observable in practice only if the single $\beta$-decay is forbidden or strongly suppressed. The $2\beta_{0\nu}$ decay is the same as Eq. \ref{double-decay} but without neutrinos in the final state. It occurs only if neutrinos have mass, which has been proven, and if neutrinos are Majorana particles and there is no lepton number conservation. The last two requirements have not been verified yet, but are crucial for the observation of the decay: in particular, the Majorana nature of neutrinos would allow the interaction, since a neutrino and antineutrino would be the same particle. The Feynman diagrams of these processes are shown in Fig. \ref{fig:double-beta}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{images/chap1/double-beta.png}
+    \caption{Feynman diagrams of the double $\beta$ decay (left) and of the neutrinoless double $\beta$ decay (right) \cite{double-beta}.}
+    \label{fig:double-beta}
+\end{figure}
+
+The $2\beta_{0\nu}$ half-life of a nucleus can be obtained from:
+
+\begin{equation}
+\label{half-life}
+    [T^{0\nu}_{1/2}(\mathcal{N})]^{-1} = G^\mathcal{N}_{0\nu}|\mathcal{M}^\mathcal{N}_{0\nu}|^2\frac{\langle m_{\beta \beta}\rangle^2}{m_e^2}
+\end{equation}
+
+where $G^\mathcal{N}_{0\nu}$ and $\mathcal{M}^\mathcal{N}_{0\nu}$ are the phase space factor and the nuclear matrix element, respectively, $\langle m_{\beta \beta} \rangle = |\sum_i U^2_{ei} m_{\nu_i}|$ is the effective Majorana mass and $m_e$ is the electron mass.
+
+The goal of the experiments is to measure the half-life of $2\beta_{0\nu}$ decay, that is proportional to $T^{0\nu}_{1/2} \propto \sqrt{\frac{M_{det} t_{obs}}{B\Delta E}}$, where $M_{det}$ is the detector mass, $t_{obs}$ is the observation time duration, $B$ is the rate of background events for unit of mass, time and energy and $\Delta E$ is the search energy window \cite{exp-formula-neutrinoless}. Hence, experiments usually measure the energy spectrum and then infer the value of the half-life. As shown in Fig. \ref{fig:energy-spect}, it has a continuous spectrum for $2\beta_{2\nu}$-decay and a value equal to $Q$-value in case of $2\beta_{0\nu}$-decay. Moreover, the experiments need a large mass, the best possible energy resolution and an extremely low background. The chosen isotopes are usually the ones for which the single $\beta$-decay is forbidden or strongly suppressed. Only 36 nuclei that can undergo double $\beta$ decay are known, that are reported in \cite{list-of-double-decay}.
+There are typically two types of $2\beta_{0\nu}$ experiments: those in which the source is inserted as thin foil inside a tracking detector, such as NEMO3 \cite{NEMO3}, and experiments where the detector itself is the source, such as CUORE \cite{CUORE}, HdM \cite{HdM-2} and GERDA \cite{Gerda-2}. The problems of the first kind of experiments are the limitation of source material and the limited energy resolution.
+Up to now, no experiment claimed the observation of a clear signal of this decay. The GERDA experiment obtained a lower bound on the half-life of $2\beta^-_{0\nu}$ decay, that is $T^{0\nu}_{1/2}$(\textsuperscript{76}Ge)$> 1.8 \times 10^{26}$ y at 90\% C.L. that corresponds to an effective neutrino mass $m_{\beta\beta} < (0.06 - 0.16)$ eV. \cite{GERDA}
+
+\begin{figure}
+    \centering
+    \includegraphics{images/chap1/en-spectrum_double-beta.jpg}
+    \caption{Distribution of the sum of the two electron energies for $2\beta_{2\nu}$ and $2\beta_{0\nu}$ decay \cite{en-spectrum-double-beta}.}
+    \label{fig:energy-spect}
+\end{figure}
+
+\subsubsection{Cosmological constraints}
+Cosmology experiments give the strongest constraints on the value of neutrino mass. They are based on the $\Lambda$CDM model (the Standard Model of Cosmology), that assumes the existence of hot relic neutrinos as products of the Big Bang \cite{giunti_kim_fundamental}. 
+
+A way to get a constraint is through imposing a limit on the fraction of the energy-density of the Universe in the form of massive neutrinos, that is:
+
+\begin{equation}
+\label{en-dens}
+    \Omega_\nu = \frac{\rho_\nu}{\rho_c} = \frac{\sum_i m_i}{93.14 h^2 \text{ eV}} 
+\end{equation}
+
+Since matter should not be so heavy to overclose the Universe, the neutrino's energy-density fraction must be $\Omega_\nu < 1$. This condition leads to a powerful bound on the sum of neutrino masses. An analysis of WMAP data on the matter present in the Universe leads to \cite{giunti_kim_fundamental}: 
+
+\begin{equation}
+    \Omega_\nu h^2 < \Omega_M h^2 \simeq 0.14 \Longrightarrow \sum_i m_i < 13\text{ eV}.
+\end{equation}
+
+Another way to put an upper bound on the neutrino mass is by studying their effects on the cosmological structures' formation. These structures are generated by the growth of perturbations of the dark matter density, under gravitational effect. If fluctuations overcome a threshold, gravitation wells are able to trap the matter. Hence, Cold Dark Matter (CDM) falls inside these wells, contributing to their growth and yield to galaxies and clusters formation. Hot Dark Matter (HDM), instead, is too fast to be captured by these wells, hence the small structures are suppressed in favour of larger structures, that can trap the hot DM. Neutrinos, that decoupled in the early Universe when they were relativistic, behave as hot dark matter, thus suppressing the growth of structures at small scales. 
+A recent analysis that used data from Planck, BOSS experiment, Pantheon sample and CMB lensing reconstruction power spectrum \cite{cosmology-nu} reached an upper bound on neutrino mass of $\sum_i m_i < 0.087$ eV.
+
+Future experiments, such as CMB-S4 \cite{future-CMB}, will determine if the neutrino mass is non-null at $3\sigma$ level, being sensitive to $\sum_i m_i > 2 \times 10^{-1}$ eV.
+
+
+
+\section{Neutrino mixing and oscillation}
+\label{neutrino-mixing}
+The neutrino mixing comes straight forward from the massive neutrinos \cite{giunti_kim_fundamental}. In fact, we can think of the neutrino flavours as a mixing of three mass eigenstates. Getting back to the Eq. \ref{cc_lagrangian}, the leptonic weak charged current is: 
+
+\begin{equation}
+    j^{\rho\dag}_{W,L} = 2 \sum_{\alpha = e, \mu, \tau} \overline{l}'_{\alpha L} \gamma^\rho \nu'_{\alpha L} = 2 \overline{\bm{l}}'_L \gamma^\rho \bm{\nu}'_L
+\end{equation}
+
+% We can rearrange the current through a unitary matrix $V$, writing: 
+% \begin{equation*}
+%     \bm{l}'_L = V^l_L \bm{l}_L, \bm{\nu}'_L = V^\nu_L \bm{\nu}_L
+% \end{equation*}
+We can rearrange the current through a unitary matrix $V$, and so it becomes: 
+
+\begin{equation}
+\label{c_current_pmns}
+     j^{\rho\dag}_{W,L} = 2 \overline{\bm{l}}_LV^{l\dag}_L \gamma^\rho V^{\nu}_L \bm{\nu}_L =  2 \overline{\bm{l}}_L \gamma^\rho U \bm{n}_L = 2 \sum_{\alpha = e, \mu, \tau} \sum_{k=1}^3\overline{l}_{\alpha L}\gamma^\rho U_{\alpha k} \nu_{kL}
+\end{equation}
+
+with $U = V^{l\dag}_L V^\nu_L$. 
+This is the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix, that \say{matches} neutrinos in mass basis with neutrinos in flavour basis. 
+It has 9 parameters (3 angles and 6 phases), that can be reduced into 4 (3 angles, $\theta_{12}, \theta_{13}, \theta_{23}$, and one phase, $\delta_{13}$), so usually it's represented as: 
+  \[ U = 
+  \begin{pmatrix}
+         1 & 0 & 0 \\
+         0 & c_{23} & s_{23}\\ 
+         0 & -s_{23} & c_{23} 
+     \end{pmatrix}
+     \begin{pmatrix}
+         c_{13} & 0 & s_{13}e^{-i\delta_{13}}\\
+         0 & 1 & 0\\
+         -s_{13}e^{i\delta_{13}} & 0 & c_{13} 
+     \end{pmatrix}
+     \begin{pmatrix}
+         c_{12} & s_{12} & 0\\
+         -s_{12} & c_{12} & 0\\ 
+         0 & 0  & 1 
+     \end{pmatrix} \] 
+where $c_{ij} = \cos{\theta_{ij}}$ and $s_{ij} = \sin{\theta_{ij}}$, with $0 < \theta_{ij} < \pi/2$ and $0 < \delta_{13} < 2\pi$.
+
+\subsection{Oscillations in vacuum}
+\label{vacuum-oscillation}
+The $U_{\text{PMNS}}$ matrix plays a fundamental role in the description of the neutrino oscillations in vacuum. Indeed, a neutrino of flavour $\alpha$ with momentum $\Vec{p}$ is described by the flavour state: 
+
+\begin{equation}
+\label{nu_comb_lin}
+    \ket{\nu_\alpha} = \sum_{k=1}^3 U^*_{\alpha k} \ket{\nu_k},
+\end{equation}
+
+where the presence of $U^*_{\alpha k}$ is due to the decomposition in terms of massive neutrinos contributions of $j^\rho_{W,L}$ in Eq. \ref{c_current_pmns}. 
+A given mass eigenstate $\ket{\nu_k}$ propagates in time as a plane wave: 
+
+\begin{equation}
+\label{mass_nu_prop}
+    \ket{\nu_k(t)} = e^{-iE_kt}\ket{\nu_k}
+\end{equation}
+
+So, combining Eqs. \ref{nu_comb_lin} and \ref{mass_nu_prop}, a neutrino $\ket{\nu_\alpha}$ at a time $t$ can be described as: 
+
+\begin{equation}
+    \ket{\nu_\alpha(t)} = \sum_{k=1}^3 U^*_{\alpha k} e^{-iE_kt}\ket{\nu_k}
+\end{equation}
+
+Since a flavour eigenstate can be considered a linear combination of mass eigenstates, there is a non-null probability that a neutrino $\alpha$ during its propagation changes to a flavour $\beta$. This probability is: 
+
+\begin{equation}
+    P_{\nu_{\alpha} \rightarrow \nu_{\beta}}(t) = |\braket{\nu_\beta|\nu_\alpha (t)}|^2 = \sum_{kj} U^*_{\alpha k}U_{\beta k}U_{\alpha j}U^*_{\beta j} \text{exp}({-i(E_k - E_j)t})
+\end{equation}
+
+In the relativistic limit, $E_k \simeq E + \frac{m^2_k}{2E}$, hence $E_k - Ej \simeq \frac{\Delta m^2_{kj}}{2E}$, where $\Delta m^2_{kj} = m^2_k - m^2_j$.  So, the probability can be approximated as: 
+
+\begin{equation}
+    P_{\nu_{\alpha} \rightarrow \nu_{\beta}}(L,E) \simeq \sum_{kj} U^*_{\alpha k}U_{\beta k}U_{\alpha j}U^*_{\beta j} \text{exp}\left(-i\frac{\Delta m^2_{kj} L}{2E}\right).
+\end{equation}
+
+Here we have substituted the time of flight $t$ with $L$, the distance between the source and the detector, since it is a known quantity, being neutrinos relativistic particles.
+For what concerns the squared mass difference, we have $\Delta m^2_{21}$ called \say{solar mass splitting} and $\Delta m^2_{31} = \Delta m^2_{32} + \Delta m^2_{21}$, called \say{atmospheric mass splitting}. Given these differences, we have two possible ways to order 3 neutrinos: \textit{normal ordering} (NO), where $m_1 < m_2 < m_3$ and \textit{inverted ordering} (IO), where $m_3 < m_1 < m_2$, as shown in Fig. \ref{fig:MO}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.22]{images/chap1/MO.png}
+    \caption{Representation of the two possible mass orderings with flavour content of each mass eigenstate.}
+    \label{fig:MO}
+\end{figure}
+
+Historically, the oscillation was analyzed between two Dirac neutrino states. In this approximation, the mixing depends only on one parameter $\theta$ and the probability can be expressed as: 
+
+\begin{equation}
+\label{2-nu_approx}
+    P_{\nu_{\alpha} \rightarrow \nu_{\beta}} = \delta_{\alpha\beta} - (2\delta_{\alpha\beta} - 1)\sin^2{2\theta}\sin^2{\frac{\Delta m^2 L}{4E}}
+\end{equation}
+
+From Eq. \ref{2-nu_approx}, comes straightforward that the possibility for an experiment to measure the oscillation depends on the baseline \textit{L} and the energy spectrum\textit{E}.
+Furthermore, the mass difference appears squared, and this doesn't allow us to know the mass ordering from the oscillation probability. 
+
+It must be noted that the plane-wave treatment is an approximation. In fact, since a plane wave has a definite momentum $\Vec{p}$, its position is undefined due to the Heisenberg principle $\Delta x \Delta p \geq \hbar/2$. However, to determine the overall distance $L$ it is crucial to know where the neutrino is produced and where is detected. Hence, to describe a real localized particle the wave-packet treatment is used. In this picture, each mass eigenstate is described by a wave packet that can have a different mass. So, different mass eigenstates produced at the same instant will arrive at separate times, depending on their individual speeds, impeding the oscillation phenomenon.  For example, for accelerator neutrinos with an energy of 1 GeV the separation occurs in $10^{20}$ km, much higher than the distances considered in the accelerator experiments, therefore this separation can be disregarded. Instead, for a supernova neutrino, with energy of 10 MeV, the separation occurs over a distance of $10^3$ km, and neutrinos arrive with a time difference of $10^{-4}$ s.
+
+
+\subsection{Matter effects}
+During the propagation of neutrinos in matter, effective potentials coming from the coherent interactions with the medium, shown in Fig. \ref{fig:feynman-msw-effects}, must be taken into account. In particular, electron neutrinos can experience extra charged current interactions due to the presence of electrons in standard matter. Incoherent scatterings with particles are also present, but are extremely rare and can be neglected \cite{giunti_kim_fundamental}. This phenomenon was predicted by Wolfenstein, Mikheev and Smirnov and is known as \textit{MSW effect}. They predicted that flavour transitions are possible when neutrinos propagate in a medium with variable density, even with a small vacuum mixing angle, and that there is a region in which the effective mixing angle is at its maximum value of $\pi/4$.
+
+\begin{figure}
+    \centering
+    \includegraphics{images/chap1/feynman_msw_effect.png}
+    \caption{Feynman diagrams of coherent elastic scattering processes, responsible of the CC potential ($V_{CC}$) and the NC potential ($V_{NC}$) through \textit{W} and \textit{Z} exchange respectively.}
+    \label{fig:feynman-msw-effects}
+\end{figure}
+
+Considering a constant matter density, and including the effects of $V_{CC}$ and $V_{NC}$, the transition probability of Eq. \ref{2-nu_approx}, in the case of $\nu_e$ and $\nu_\mu$, changes to: 
+
+\begin{equation}
+\label{2-nu_approx_msw_eq}
+    P_{\nu_{e} \rightarrow \nu_{\mu}}(x) = \sin^2{2\theta_{M}}\sin^2{\frac{\Delta m^2_{M} x}{4E}}
+\end{equation}
+
+where $x$ is the propagation length,
+
+\begin{equation}
+    \Delta m^2_M = \Delta m^2 \sqrt{\sin^2(2\theta)+(\cos 2\theta - \zeta)^2},
+\end{equation}
+\begin{equation}
+\label{sin_msw}
+    \sin^2 2\theta_M = \frac{\sin^2 2\theta}{(\sin^2 2\theta + (\cos 2\theta - \zeta)^2},
+\end{equation}
+
+and 
+
+\begin{equation}
+    \zeta = \frac{2\sqrt{2}G_F N_e E}{\Delta m^2},
+\end{equation}
+
+with $N_e$ electron density, $E$ energy and $G_F$ Fermi coupling constant.
+From Eq. \ref{sin_msw} follows that exists a value of electron density $N_e$ for which $\zeta$ equals $\cos 2\theta$, leading to $\sin^2 2\theta_M = 1$. This means that even if the vacuum mixing angle is very small, for a certain density, the matter mixing angle $\theta_M$ is maximal. 
+
+Moreover, the sign of $\zeta$ can give information about the mass ordering of neutrinos. In fact, $\zeta$ is related to $\Delta m^2$ and in Eq. \ref{sin_msw} it is not squared, so it preserves the sign of the mass difference. This is one of the most important features of this phenomenon, which is not present in the vacuum oscillation formula, where the sine is squared and cannot give any information about the mass ordering.
+Lastly, it can be observed that, if $\Delta m^2$ or $\theta$ are null, also the mixing angle in matter is null, so vacuum oscillation is necessary to have oscillation in matter; if there is no matter, $\zeta$ vanishes returning to the vacuum case \cite{giunti_kim_fundamental}.
+
+
+\section{Measurements of oscillation parameters}
+Neutrinos originate from several sources, such as the Sun and cosmic ray interactions with the atmosphere. They can also be produced by nuclear reactors and accelerators. These sources vary in terms of the distance $L$ from the detection point and for the energy $E$ of the produced neutrinos, thus leading to different accessible $\Delta m^2$ values.
+Over the years, various experiments have been built to study neutrino properties. 
+These experiments can be based on two different modes of observation: 
+\begin{itemize}
+    \item \textbf{Appearance mode}: given a source of $\nu_\alpha$, the goal is to detect a different flavour at a distance $L$ from the source, with a probability $P_{\nu_{\alpha} \rightarrow \nu_{\beta}}$, according to Eq. \ref{2-nu_approx}. In this case, the final flavour in the initial beam is either absent or present as contamination. Hence, the background can be quite small and so this mode can be used for the measurement of small mixing angles.
+    \item \textbf{Disappearance mode}: given a source of $\nu_\alpha$, the goal is to measure $\nu_\alpha$ flux at a distance $L$ from the source, with the \say{survival} probability $P_{\nu_{\alpha} \rightarrow \nu_{\alpha}}$, according to: 
+    
+    \begin{equation}
+    \label{disapp_prob}
+        P_{\nu_{\alpha} \rightarrow \nu_{\alpha}} = 1 - \sum_{\beta \neq \alpha} P_{\nu_{\alpha} \rightarrow \nu_{\beta}}
+    \end{equation}
+    
+    In this case, the measurement is based on a comparison of the initial and final interaction rates.  The disappearance mode is not suitable for measuring small mixing angles because small disappearances are not easily detected due to statistical fluctuations. 
+    \end{itemize}
+
+For long-baseline experiments, two main detectors are tipically constructed: a near detector that measures the neutrino flux close to the source and monitors the beam, and a larger far detector that measures the flux after a distance $L$. Both detector have usually the same technology, to reduce the systematic uncertainties.
+
+\subsection{Solar neutrinos experiments}
+Solar neutrinos originate from processes inside the Sun. In the solar core, thermonuclear fusion reactions occur, producing electron neutrinos with energy of the order of 1 MeV \cite{giunti_kim_fundamental}. According to the Solar Standard Model (SSM), the neutrino flux is made of many components that come from various reactions, as shown in Fig. \ref{fig:nu-flux-SSM}. Neutrinos cross the solar inner matter and then arrive on Earth with a flux of $\sim 6 \times 10^{10} \text{ cm}^{-2}\text{s}^{-1}$. However, the detection of these neutrinos is difficult, mainly because of their very small cross section ($\mathcal{O}(10^{-43}) \text{ cm}^2$). For this reason solar neutrino experiments usually are designed as large detectors, placed underground to avoid the huge background given by cosmic rays.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{images/chap1/nu-flux-SSM.png}
+    \caption{Spectrum of solar neutrino fluxes predicted by the SSM \cite{solar_neutrino_flux}.}
+    \label{fig:nu-flux-SSM}
+\end{figure}
+
+The first solar experiment built was the Homestake experiment, in 1968. It was a radiochemical experiment, that detected $\nu_e$ through the inverse $\beta$-decay reaction $\nu_e +$ \textsuperscript{37}Cl $\rightarrow$ \textsuperscript{37}Ar $+ e^-$. It had an energy threshold of $E_{thr} = 800$ keV, being therefore sensitive to \textsuperscript{8}B and \textsuperscript{7}Be neutrino sources. It ran from 1970 to 1994 and observed about 1/3 of the solar neutrinos predicted by the SSM \cite{Homestake}. 
+The scientific community proposed three possibilities to explain this deviation: the Standard Solar Model was wrong; the experiment was not well-calibrated; there was some phenomenon that was being neglected and it could be responsible of this deficit.
+
+In the 1990s other experiments such as GALLEX/GNO \cite{gallex/gno} and SAGE \cite{SAGE} were built. They lowered the neutrino energy threshold at $E_{thr} = 233$ keV using the reaction $\nu_e +$ \textsuperscript{71}Ga $\rightarrow$ \textsuperscript{71}Ge $+ e^-$. From their results, a deficit of 1/2 from the predictions was confirmed.
+
+Meanwhile, a new kind of detector was developed: the water Cherenkov detectors. They are water-filled detectors that exploit the Cherenkov radiation to detect neutrinos. Their main advantage is their sensitivity to all the three flavours of neutrinos and to the directionality of the radiation. Construction of the Kamiokande experiment began in 1983 \cite{Kamiokande}. The detector consisted of a 3 kton water-filled tank, with an energy threshold of $E_{thr} = 6.5$ MeV. It detected solar neutrinos from \textsuperscript{8}B that undergo elastic scattering. Then, it was improved with the construction of Super-Kamiokande, filled with 50 kton of water. Both these experiments measured again a deviation from the SSM predictions, with a deficit of $\sim 1/2$.
+
+Pontecorvo already proposed in 1957 that neutrinos could oscillate between the three flavours. Actually, this could be a possible explanation of this observation but these experiments were only sensitive to CC interactions, they could not test this hypothesis. A new experiment that could measure also the neutral current interactions was necessary.
+
+The SNO experiment was built in 1999. Its goal was to compare the observed deficit with the amount of neutrinos of the other flavours. In its final version, it consisted of a giant bath filled with 1 kton of D\textsubscript{2}O and equipped with 9600 photosensors. The detection technique was based on the following reactions: $\nu_e + d \rightarrow p + p + e^-$ (CC), sensitive to electron neutrinos; $\nu_\alpha + d \rightarrow p + n + \nu_\alpha$ (NC) and $\nu_\alpha + e^- \rightarrow \nu_\alpha + e^-$ (ES) sensitive to all the three flavours.
+In 2003, definitive results were published: they confirmed that only 1/3 of solar neutrinos were electronic, while the remaining 2/3 were muonic and tauonic, indicating that electronic neutrinos converted into another flavour \cite{SNO_flux}. This is shown in Fig. \ref{fig:SNO-fluxes}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=1.1]{images/chap1/SNO_fluxes.jpg}
+    \caption{Flux of \textsuperscript{8}B solar $\nu_\mu$ or $\nu_\tau$ ($\Phi_{\mu\tau}$) versus flux of $\nu_e$ ($\Phi_e$). It shows the consistency between the total flux (blue band) with the prediction of the SSM (band between the dashed lines) \cite{SNO_flux}.}
+    \label{fig:SNO-fluxes}
+\end{figure}
+
+The oscillation phenomenon related to solar neutrinos is governed by two parameters: $\theta_{12}$ and $\Delta m^2_{12}$. From these experiments, an allowed region of values for these parameters was determined, as shown in Tab. \ref{tab:solar-reactor-pars}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        Data combination & $\tan^2\theta_{12}$ & $\Delta m^2_{21} (\text{eV}^2)$ \\
+        \hline
+        Solar experiments \cite{SNO_flux} & $0.427^{+0.028}_{-0.028}$ & $5.13^{+1.29}_{-0.96} \times 10^{-5}$ \\
+        KamLAND \cite{KamLAND} & $0.481^{+0.092}_{-0.080}$ & $7.54^{+0.19}_{-0.18} \times 10^{-5}$ \\
+        Solar + KamLAND \cite{solar_reactor_combined_analysis} & $0.427^{+0.027}_{-0.024}$ & $7.46^{+0.20}_{-0.19} \times 10^{-5}$ \\
+    \end{tabular}
+    \caption{Values of parameters obtained using data from solar experiments, from KamLAND and from a combination of them.}
+    \label{tab:solar-reactor-pars}
+\end{table}
+
+\subsection{Reactor experiments}
+Nuclear reactors are sources of $\overline{\nu}_e$, that are produced in $\beta$-decays. The nuclei most commonly used in nuclear reactors are \textsuperscript{235}U, \textsuperscript{238}U, \textsuperscript{239}Pu and \textsuperscript{241}Pu. The production of antineutrinos is isotropic, then the flux decreases with the distance from the source. The neutrino production rate and the spectrum can be estimated from the thermal power and fuel composition as a function of time. The detection technique, in reactor experiments, is based on the inverse $\beta$-decay: $\overline{\nu}_e + p \rightarrow e^+ + n$. From this reaction two scintillation signals are observed: a prompt one, from the annihilation of the positron with an electron, and a delayed one, of 2.2 MeV, produced $\sim 200$ $\mu$s later, due to the neutron capture and the subsequent de-excitation of the nucleus.
+
+The KamLAND experiment started the operations in 2002, exploiting the neutrino flux produced by 53 commercial nuclear reactors, located on average 180-km away from the detector \cite{KamLAND}. The detector was made of 1 kton of ultra-pure liquid scintillator, which acted as the neutrino target and was contained in a spherical balloon of 13-m-diameter. The average energy of the $\overline{\nu}_e$ spectrum was $\langle E_\nu \rangle \simeq 3.6$ MeV, that is the same energy region of solar neutrinos. KamLAND \cite{KamLAND} showed the $\overline{\nu}_e$ disappearance at 99.95\% confidence level and determined the oscillation parameters presented in Tab. \ref{tab:solar-reactor-pars}.
+Furthermore, reactor experiments have a good energy resolution but low event statistics, while solar experiments have high statistics and a low energy resolution. Hence, a combined analysis is possible: using the data of KamLAND and of solar neutrino experiments, the allowed region for the values $\Delta m^2_{12}$ and $\sin^2\theta_{12}$ was constrained, as reported in Fig. \ref{fig:combined_analysis_solar}.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap1/solar_results_1.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap1/solar_results_2.png}}
+    \caption{Three-flavour neutrino oscillation analysis contour using both solar and KamLAND (KL) data \cite{solar_reactor_combined_analysis}.}
+    \label{fig:combined_analysis_solar}
+\end{figure}
+
+Other nuclear reactor experiments such as Daya-Bay, RENO, Double Chooz have been built to study the value of $\sin^2\theta_{13}$ from the $\overline{\nu}_e$ disappearance. They showed a non-zero value for this parameter and Daya-Bay, in particular, measured a value of $\sin^2 2\theta_{13} = 0.0851 \pm 0.0024$ \cite{daya-bay}.
+
+\subsection{Atmospheric neutrino experiments}
+Atmospheric neutrinos are produced from the interaction of primary cosmic rays (CRs) with the nuclei in the atmosphere \cite{giunti_kim_fundamental}. The principal components of CRs are protons, that  produce secondary CRs when interacting with nuclei. These secondary CRs include hadrons, in particular many pions, and their decay products, which tipically have energy of the order of GeV. The reaction chain is the following (Eqs. \ref{react1}, \ref{react2}, \ref{react3}):
+
+\begin{equation}
+\label{react1}
+    p + N \rightarrow \pi^\pm, \pi^0, K^\pm, K^0, p, n, ...
+\end{equation}
+
+where $N$ is a generic nucleus of the atmosphere. Then, pions and, at high energies, also kaons, decay into muons and muon neutrinos:
+
+\begin{equation}
+\label{react2}
+    \pi^+ \rightarrow \mu^+ + \nu_\mu, \pi^- \rightarrow \mu^- + \overline{\nu}_\mu
+\end{equation}
+
+At last, low-energy muons decay before reaching the ground, producing an electron, an electron neutrino and a muon neutrino:
+
+\begin{equation}
+\label{react3}
+    \mu^+ \rightarrow e^+ + \nu_e + \overline{\nu}_\mu, \mu^- \rightarrow e^- + \overline{\nu}_e + \nu_\mu.
+\end{equation}
+
+The typical experiments that detect atmospheric neutrinos utilizes Cherenkov underground detectors. In fact, being shielded from the large background given by the secondary CRs is fundamental.
+
+In 1980s, atmospheric neutrinos were observed by Kamiokande and IMB, two large underground water Cherenkov detectors. These experiments could detect either neutrinos that interacted within the detector, either upward- or downward-going muons produced by the neutrino interactions outside the tank. The results of both experiments showed a significant deficit in the number of atmospheric muon neutrino interactions, claiming for the first time the \textit{atmospheric neutrino anomaly}. 
+The successor of Kamiokande, Super-Kamiokande (SK), revealed the solution assuming muon neutrinos oscillations. This is clearly shown in Fig. \ref{fig:SK-osc-discovery}: they present an up-down asymmetry, showing that data are in agreement with the oscillation hypothesis.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{images/chap1/SK-osc-discovery.png}
+    \caption{Super-Kamiokande plots: black dots are the experimental data, red and light-blue solid lines are MC predictions, assuming oscillation and no-oscillation hypothesis, respectively \cite{SK-oscillation}.}
+    \label{fig:SK-osc-discovery}
+\end{figure}
+
+The SK experiment collected a significant amount of data on atmospheric neutrinos over the years, giving a great boost to model the atmospheric neutrino oscillations from muon to tau neutrinos, and to infer their parameters: $\Delta m^2_{32}$ and $\sin^2 \theta_{23}$. Other experiments such as MACRO and Soudan 2, confirmed these results.
+
+\subsection{Accelerator experiments}
+Accelerator experiments were built to verify the results of atmospheric neutrino experiments, using a similar $L/E$ ratio.
+
+A conventional neutrino beam is produced by sending high-energy protons towards a target. The interaction produces hadrons, mainly pions and kaons, which are focused into a beam by magnetic horns. These horns can be controlled to choose the operating mode of the beam, i.e. neutrino or antineutrino mode. Then, in the decay pipe, they decay into neutrinos. The remaining hadrons and muons are absorbed and stopped, leaving only neutrinos inside the beam. Actually, the beam can be contaminated. Considering a $\nu_\mu$ beam, the larger amount of neutrinos comes from pion decay as shown in Eq. \ref{react2}, but from the subsequent decay of muons (Eq. \ref{react3}), from $\pi^+ \rightarrow e^+ \nu_e$ or $K^+ \rightarrow e^+ \pi^0 \nu_e$ also electron neutrinos can be produced, that contaminate the beam.
+
+These experiments can reach different sensitivities depending on the value of $L/E$, which can be modified according to the experiment's goals. Depending on their baseline, the experiments can be categorized as: Long-Baseline (LBL) experiments, which use $\sim$ GeV neutrinos and a baseline of $10^{3-4}$ m and Short-Baseline (SBL) experiments, which have a baseline of 1 km and can study neutrino oscillations also at 1 eV. Tipically, LBL experiments have two detectors, a near one and a far one. The near detector aims to reduce the systematic uncertainties due to neutrino flux and neutrino interactions with nuclei. It provides data on the beam close to the source, monitors the beam, and gives information on the energy spectrum and cross sections. The far detector measures the flux and the eventual neutrino oscillation after the baseline. Accelerator experiments can also be classified according to energy spectrum of the beam. They can have a wide-band beam, that is, with a wide energy spectrum that can span one or two orders of magnitude, suitable for searching for new oscillation signals in a wide range of $\Delta m^2$ values; a narrow-band beam, obtained selecting the momenta of pions and kaons, suitable for precise measurements of $\Delta m^2$; \say{off-axis}, with the detector shifted from the beam axis by a small angle.
+
+Numerous experiments have been conducted in the past 25 years. The first LBL experiment was K2K, which sent a neutrino beam for 250 km from the KEK proton synchrotron to the Super-Kamiokande detector. The beam consisted mainly of muons, with an average energy of $\langle E_\nu \rangle \sim 1.3$ GeV. The near detector, a 1 kton water tank, was placed 300 m away from the source. K2K confirmed the results obtained from atmospheric neutrinos observations, showing again a muon deficit. 
+
+The OPERA experiment was built at the LNGS and operated until 2012. It exploited the CERN to Gran Sasso (CNGS) muon neutrino beam, with a baseline of 730 km and an average energy of $\langle E_\nu \rangle \sim 17.7$ GeV. The OPERA detector was based on nuclear emulsions and muon spectrometers. It provided significant evidences for $\nu_\mu \rightarrow \nu_\tau$ oscillation, detecting precisely the $\nu_\tau$ appearance in the beam \cite{OPERA}. 
+
+Roughly in the same years, the MINOS experiment operated. It was a LBL experiment with a 735-km baseline, that ran from Fermilab to the Soudan mine. It used the muon neutrino beam produced with an average energy $\langle E_\nu \rangle \sim 120 $ GeV by the Main Injector at Fermilab. The near and the far detectors consisted of iron-scintillator tracking calorimeters with toroidal magnetic fields. MINOS confirmed the observation of the SK experiment and measured the oscillation parameters: $\Delta m^2_{32}$ and $\sin^2 2\theta_{23}$ \cite{MINOS}. 
+
+The latest experiments are T2K and NO$\nu$A. T2K is a LBL experiment in Japan which started in the last decade. It has a 295-km baseline, stretching from Tokai to Super-Kamiokande. The muon neutrino beam energy spectrum is centered on 600 MeV, to maximize the oscillation probability over its baseline. The near detector complex, which includes an on- and off-axis detector, is located 280 m from the source. The on-axis detector, INGRID, monitors the flux before the oscillations occur. 
+
+The off-axis detector consists of a water-scintillator detector to identify $\pi^0$s, TPCs for tracking, fine grained detectors to study CC interactions, and an ECAL. It is located at 2.5° to the central direction of the beam as well as SK. T2K in 2011 claimed for the first time the observation of muon to electron neutrino oscillations \cite{T2K}. 
+
+The NO$\nu$A experiment is an LBL experiment, with an 810-km baseline. The beam, produced at NuMI at Fermilab is sent to Ash River, in Minnesota. The near detector, located 1 km from the source, uses liquid scintillator detectors, as does the far detector, but it also has a module for muon/pion discrimination. Both detectors are located off-axis, precisely 14.6 mrad from the central direction of the beam. It recorded several $\overline{\nu}_\mu \rightarrow \overline{\nu}_e$ events that have been analyzed, constraining $\Delta m^2_{32}$ and $\sin^2 \theta_{23}$ parameters \cite{NOVA}.
+The off-axis (OA) technique yields an almost monochromatic neutrino flux in a detector that is shifted by an angle from the central direction of the high-intensity wide-band beam, as Fig. \ref{fig:off-axis-plots}b shows. The OA configuration is based on the dependence of the neutrino energy $E$ on the small off-axis angle $\theta$. With some assumptions, the relation is described by the Eq. \ref{off-axis}, which shows the monochromatic nature of off-axis the neutrino energy:
+
+\begin{equation}
+\label{off-axis}
+    E \simeq \left(1-\frac{m^2_\mu}{m^2_\pi}\right)\frac{E_\pi}{1+\gamma^2\theta^2} = \left(1-\frac{m^2_\mu}{m^2_\pi}\right)\frac{E_\pi m^2_\pi}{m^2_\pi + E^2_\pi \theta^2}
+\end{equation}
+
+For a on-axis detector, with $\theta = 0$°, the neutrino energy $E$ is proportional to the pion energy $E_\pi$. As the detector moves off-axis, the dependence of $E$ from $E_\pi$ quenches, as can be seen from the plot in Fig. \ref{fig:off-axis-plots}a.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap1/nu_pi.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap1/flux_nu.png}}
+    \caption{(a): neutrino energy as a function of the parent pion energy. (b): neutrino fluxes integrated over all pion energies produced by a proton beam of 12 GeV. The angle $\theta$ is an angle between pion direction and neutrino direction. As the angle increases, the neutrino flux has a more peaked energy \cite{off-axis-plots}.}
+    \label{fig:off-axis-plots}
+\end{figure}
+\noindent Future LBL experiments are DUNE, that will be outlined in Chap. \ref{DUNE-design} and Hyper-Kamiokande, the upgrade of Super-Kamiokande, with a 260-kton total mass.
+
+The other kind of experiments are the SBL ones, where the detector is placed near the neutrino beam source. \\LSND was an experiment located at Los Alamos National Laboratory that sent $\overline{\nu}_\mu$ beam to a cylindrical tank detector at 29.8 m from the source. LSND found a evidence for $\overline{\nu}_\mu \rightarrow \overline{\nu}_e$ oscillation, observing a $\overline{\nu}_e$ abundance in 2001 \cite{LSND-abundance}. \\MiniBooNE was a SBL experiment at Fermilab, that operated from 2002 to 2012 with the goal of testing LSND observations. It confirmed LSND results, observing also a $\nu_\mu \rightarrow \nu_e$ excess. 
+These are important results because, if confirmed, they require an extension of the 3-$\nu$ paradigm to be explained. Future experiments such as JSNS at J-PARC and the Short-Baseline Neutrino (SBN) program at Fermilab will further investigate the anomalies observed in LSND and MiniBooNE. The SBN program includes three experiments based on LAr-TPC technology, with different baselines: SBND at 110 m, MicroBooNE at 470 m and ICARUS at 600 m \cite{SBN-program}. 
+
+\subsection{Current values of neutrino oscillation parameters}
+\label{current_pars}
+In Tab. \ref{tab:all_pars} all current values of the known oscillation parameters are presented. They are obtained from a global fit analysis of all the experiments' results obtained up to now. 
+
+\begin{table}
+    \centering
+        \begin{tabular}{|c||c|c|c|} 
+        \hline
+            & Parameters & best fit param. $\pm 1\sigma$ & $3\sigma$ \\
+        \hline
+        \hline
+        \multirow{6}{4em}{Normal Ordering (NO)} & $\theta_{12}/$° & $33.82^{+0.78}_{-0.76}$ & $31.61 \rightarrow 36.27$\\ 
+        \cline{2-4}
+        & $\theta_{23}/$° & $48.3^{+1.2}_{-1.9}$ & $40.8 \rightarrow 51.3$\\
+        \cline{2-4}
+        & $\theta_{13}/$° & $8.61^{+0.13}_{-0.13}$ & $8.22 \rightarrow 8.99$\\
+        \cline{2-4}
+        & $\delta_{\text{CP}}/$° & $222^{+38}_{-28}$ & $141 \rightarrow 370$\\
+        \cline{2-4}
+        & $\Delta m^2_{21}/(10^{-5} \text{ eV}^2)$ & $7.39^{+0.21}_{-0.20}$ & $6.79 \rightarrow 8.01$\\
+        \cline{2-4}
+        & $\Delta m^2_{32}/(10^{-3} \text{ eV}^2)$ & $2.449^{+0.032}_{-0.030}$ & $2.358 \rightarrow 2.544$\\
+        \hline
+        \hline
+        \multirow{6}{4em}{Inverted Ordering (IO)} & $\theta_{12}/$° & $33.82^{+0.78}_{-0.76}$ & $31.61 \rightarrow 36.27$\\ 
+        \cline{2-4}
+        & $\theta_{23}/$° & $48.6^{+1.1}_{-1.5}$ & $41.0 \rightarrow 51.5$\\
+        \cline{2-4}
+        & $\theta_{13}/$° & $8.65^{+0.13}_{-0.12}$ & $8.26 \rightarrow 9.02$\\
+        \cline{2-4}
+        & $\delta_{\text{CP}}/$° & $285^{+24}_{-26}$ & $205 \rightarrow 354$\\
+        \cline{2-4}
+        & $\Delta m^2_{21}/(10^{-5} \text{ eV}^2)$ & $7.39^{+0.21}_{-0.20}$ & $6.79 \rightarrow 8.01$\\
+        \cline{2-4}
+        & $\Delta m^2_{32}/(10^{-3} \text{ eV}^2)$ & $- 2.509^{+0.032}_{-0.032}$ & $- 2.603 \rightarrow - 2.416$\\
+        \hline
+        \end{tabular}
+    \caption{Current values of 3-$\nu$ oscillation parameters obtained from a global analysis of neutrino data, for both the mass ordering. \cite{pdg:2022ynf}}
+    \label{tab:all_pars}
+\end{table}
+
+The parameters known with the best accuracy are $\theta_{12}, \theta_{13}, \Delta m^2_{21}$ and $|\Delta m^2_{32}|$:
+\begin{enumerate}
+    \item $\theta_{12}$ and $\Delta m^2_{21}$ have been determined with a 2\% and 3\% precision, respectively, by solar and reactor neutrino experiments such as SNO and KamLAND;
+    \item $\theta_{23}, |\Delta m^2_{32}|$ have been constrained with a precision of 3\% and 1\% by atmospheric and accelerator neutrino experiments such as SK and T2K or NO$\nu$A;
+    \item $\theta_{13}$ has been determined with 1.5\% precision in reactor experiments, such as DoubleCHOOZ or Daya Bay, and also in accelerator experiments, such as T2K. 
+\end{enumerate}
+
+However, there are still some open questions. In particular, the unknown sign of $\Delta m^2_{32}$ leads to two possible mass orderings, as explained in Sec. \ref{vacuum-oscillation}. Moreover, the octant of $\theta_{23}$ is undetermined, since it is unknown if it is smaller or larger than 45° and the leptonic CP phase $\delta_{\text{CP}}$ has still large constraints \cite{pdg:2022ynf}.
+
+\section{Open questions}
+\subsection{Mass ordering}
+Future experiments will focus on three different configurations in order to resolve the mass ordering (Sec. \ref{vacuum-oscillation}): medium-baseline reactor experiments, looking at the oscillations' interference, such as JUNO \cite{JUNO-MO} or RENO-50 \cite{RENO}; long-baseline accelerator experiments, such as NO$\nu$A or DUNE and atmospheric neutrino experiments, like PINGU \cite{PINGU}, ORCA \cite{ORCA}, DUNE \cite{dunecollaboration2022snowmass} and HK \cite{hyperkamio}, observing the matter effects.
+
+The reactor experiments are based on $\overline{\nu}_e \rightarrow \overline{\nu}_e$ oscillations and study the oscillation interference between $\Delta m^2_{31}$ and $\Delta m^2_{32}$. For the baselines of these experiments, the matter effects are negligible.
+The oscillation probability can be approximated as:
+
+\begin{equation}
+    \begin{aligned}
+    P_{\overline{\nu}_e \rightarrow \overline{\nu}_e} & \simeq 1- \cos^4 \theta_{13} \sin^2 2\theta_{12} \sin^2\left(\frac{\Delta m^2_{21}L}{4E}\right)\\ & -\sin^2 2\theta_{13}\sin^2\left(\frac{\Delta m^2_{31}L}{4E}\right)\\ & -\sin^2\theta_{12}\sin^2 2\theta_{13}\sin^2\left(\frac{\Delta m^2_{21}L}{4E}\right)\cos\left(\frac{2|\Delta m^2_{31}|L}{4E}\right)\\ & \pm \frac{\sin^2\theta_{12}}{2}\sin^22\theta_{13}\sin\left(\frac{2\Delta m^2_{21}L}{4E}\right)\sin\left(\frac{2|\Delta m^2_{31}|L}{4E}\right)
+    \end{aligned}
+\end{equation}
+
+where the sign of the fourth term depends on the mass ordering. Moreover, this probability does not depend on the CP phase. In order to discriminate between the two mass ordering, a high-resolution energy spectrum is needed, as shown in Fig.\ref{fig:JUNO-MO}.
+JUNO and RENO-50 reactor experiments will exploit this oscillation channel, using large liquid scintillator detectors and a medium baseline of $\sim 50$ km.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.4]{images/chap1/JUNO-MO.png}
+    \caption{The relative shape difference of the reactor antineutrino flux for different neutrino mass hierarchies. The corrections due to the ordering are in phase opposition. The figure represents the product of the neutrino flux, the interaction cross section and the survival probability \cite{JUNO-MO}.}
+    \label{fig:JUNO-MO}
+\end{figure}
+
+The other kinds of experiments study $\overset{(-)}{\nu_\mu} \rightarrow \overset{(-)}{\nu_e}$ oscillations with long baselines. Their oscillation probability, assuming a constant matter density, is approximated at the second order in the small parameters $\sin \theta_{13}$ and $\alpha$ as: 
+
+\begin{equation}
+    \begin{aligned}
+    P_{\overset{(-)}{\nu_\mu} \rightarrow \overset{(-)}{\nu_e}} & \simeq 4\sin^2 \theta_{13} \sin^2 \theta_{23} \frac{\sin^2\Delta}{(1-A)^2}\\ & +\alpha^2\sin^2 2\theta_{12}\cos^2\theta_{23}\frac{\sin^2 A\Delta}{A^2}\\ & +8\alpha J^{max}_{\text{CP}}\cos(\Delta \pm \delta_{\text{CP}})\frac{\sin \Delta A}{A}\frac{\sin \Delta (1-A)}{1-A}
+    \end{aligned}
+\end{equation}
+
+where 
+
+\begin{equation}
+    J^{max}_{\text{CP}} = \cos \theta_{12}\sin \theta_{12} \cos \theta_{23}\sin \theta_{23} \cos^2 \theta_{13} \sin \theta_{13},
+\end{equation}
+
+and 
+
+\begin{equation}
+    \Delta \equiv \frac{\Delta m^2_{31}L}{4E_\nu}, A \equiv \frac{2E_\nu V}{\Delta m^2_{31}}, \alpha = \frac{\Delta m^2_{21}}{\Delta m^2_{31}},
+\end{equation}
+
+with $V$, effective matter potential of the Earth and + ($-$) depending on neutrino (antineutrino) channel. In this probability, $\Delta, A$ and $\alpha$ are sensitive to the sign of $\Delta m^2_{32}$ and there is a dependence on the CP phase. For this reason, the results of these experiments can give fundamental information on leptonic CP violation.
+
+Up to now, all analyses show a preference for normal mass ordering, and inverted ordering is disfavoured with a $\Delta \chi^2$ between $2\sigma - 3\sigma$. But more precise measurements are needed to solve the mass quest \cite{pdg:2022ynf}. 
+
+\subsection{$\theta_{23}$ octant}%\texorpdfstring{$\theta_{23}$}
+The parameter $\theta_{23}$ has not been precisely determined yet. In particular, it is unclear if its value is equal, smaller or larger than 45°, as the $3\sigma$-column of Tab. \ref{tab:all_pars} shows.
+This angle can be studied through $\nu_\mu \rightarrow \nu_e$ and $\overline{\nu}_\mu \rightarrow \overline{\nu}_e$ experiments. In fact, in the disappearance and appearance probabilities, respectively, the $\theta_{23}$-term dominates: 
+
+\begin{equation}
+P_{\nu_\mu \rightarrow \nu_\mu} \simeq 1 - \sin^2 2\theta_{23}\sin^2 \left(\frac{\Delta m^2_{31}L}{4E}\right)
+\end{equation}
+
+\begin{equation}
+P_{\nu_\mu \rightarrow \nu_e} \simeq \sin^2 \theta_{23}\sin^2 2\theta_{13}\sin^2 \left(\frac{\Delta m^2_{31}L}{4E}\right)
+\end{equation}
+
+where $\alpha = \Delta m^2_{21}/\Delta m^2_{31} \ll 1/30 \ll 1$ and matter and $\delta_{\text{CP}}$-phase terms have been neglected. \cite{theta-23-first}\\
+If $\theta_{23} \neq \pi/4$, the so-called \say{octant degeneracy} arises: indeed, a value of $\theta_{23}$ either $< 45$° (first octant) or $> 45$° (second octant) satisfies
+
+\begin{equation}
+    \sin^2 \theta_{23} = \frac{1}{2}\left[1 \pm \sqrt{1-\sin^2 2\theta_{23}}\right].
+\end{equation}
+
+This degeneracy can be solved by combining the results of accelerator and reactor experiments, and also by adding the \say{silver} channel $\nu_e \rightarrow \nu_\tau$ \cite{theta-23-first}. 
+According to Neutrino2020 updates \cite{NuFIT-2020}, there is a mild preference for the second octant of $\theta_{23}$, since the $\Delta \chi^2$ minimizes for $\sin^2 \theta_{23} = 0.57$, as shown by Fig. \ref{fig:theta-23}. Anyway, the local minimum in the first octant occurs at $\Delta \chi^2 = 0.53$ $(2.2)$ without (with) SK-atm data for $\sin^2 \theta_{23} = 0.455$. Hence, the degeneracy is still not solved, since other values of $\theta_{23}$, smaller or equal to $\pi/4$ are consistent at $3\sigma$ level \cite{pdg:2022ynf}. The global fit value will be updated by adding new data from future experiments, such as DUNE or Hyper-Kamiokande.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{images/chap1/theta-23.png}
+    \caption{$\Delta \chi^2$ profile minimized with respect $\sin^2 2\theta_{23}$. The red (blue) lines correspond to NO (IO); solid (dashed) curves are without (with) SK-atmospheric data \cite{NuFIT-2020}.}
+    \label{fig:theta-23}
+\end{figure}
+
+\subsection{CP violation}
+CP violation occurs if the PMNS matrix $U$ is not real, thus $U \neq U^*$. This implies 14 conditions that must be satisfied for CP violation, namely: 
+\begin{itemize}
+    \item No mass degeneration between charged leptons or neutrinos (6 conditions),
+    \item Mixing angles must be different from 0 or $\pi/2$ (6 conditions),
+    \item The physical phase must be different from 0 or $\pi$ (2 conditions).
+\end{itemize}
+Defining $C = -i[M^{'\nu}M^{'\nu\dag}, M^{'l}M^{'l\dag}]$, these conditions can be combined into:
+
+\begin{equation}
+    \det C \neq 0,
+\end{equation}
+
+where $\det C$ can be rewritten as: 
+
+\begin{equation}
+    \det C = -2J(m^2_{\nu_2} - m^2_{\nu_1})(m^2_{\nu_3} - m^2_{\nu_1})(m^2_{\nu_3} - m^2_{\nu_2})(m^2_{\mu} - m^2_{e})(m^2_{\tau} - m^2_{e})(m^2_{\tau} - m^2_{\mu}).
+\end{equation}
+
+$J$ is the leptonic analogue to the Jarlskog invariant in the quark sector, which is defined as $J = \text{Im}[U_{e2}U^*_{e3}U^*_{\mu2}U_{\mu3}]$. It is useful to quantify CP violation in a parametrization-independent way. In standard parametrization, it becomes
+
+\begin{equation}
+    J = c_{12}s_{12}c_{23}s_{23}c^2_{13}s_{13}\sin \delta_{13} = \frac{1}{8}\sin 2\theta_{12}\sin 2\theta_{23} \cos \theta_{13} \sin 2\theta_{13} \sin \delta_{13}.
+\end{equation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{images/chap1/CPviol.png}
+    \caption{$\nu_\mu \rightarrow \nu_e$ oscillation probability at T2K as a function of neutrino energy for several values of $\delta_{\text{CP}}$ and mass orderings. $\sin^2 \theta_{23}$ and $\sin^2 \theta_{13}$ are fixed to 0.5 and 0.1 \cite{CP-viol-mass-order}.}
+    \label{fig:CPviol}
+\end{figure}
+
+CP phase $\delta_{\text{CP}}$ plays an important role in long-baseline accelerator experiments, with $\nu_\mu \rightarrow \nu_e$ oscillation. CP violation can be observed only in case of interference between flavour oscillations involving at least two different phases and three mixing angles, since it is a three-flavour effect. To test the presence of CP violation, the behaviour of neutrino and anti-neutrino oscillations is studied, looking for some differences. If $\delta_{\text{CP}} = 0$ or $\pi$, there is no CP violation, hence $P_{\nu_\mu \rightarrow \nu_e} = P_{\overline{\nu}_\mu \rightarrow \overline{\nu}_e}$; if $\delta_{\text{CP}} = -\pi/2$ $(+\pi/2)$, $P_{\nu_\mu \rightarrow \nu_e}$ is enhanced (suppressed) and $P_{\overline{\nu}_\mu \rightarrow \overline{\nu}_e}$ is suppressed (enhanced).
+Moreover, matter effects must be considered, since they complicate the measurement. \\
+Although reactor experiments cannot have access to $\delta_{\text{CP}}$, they can be used to constrain the CP phase since it is strongly correlated with $\theta_{13}$.
+
+At present, the main experiments that aim to measure $\delta_{\text{CP}}$ are T2K and NO$\nu$A, LBL accelerator experiments. From the results obtained by T2K \cite{T2K-constr}, the $3\sigma$ C.L. for $\delta_{\text{CP}}$ is in the range [$-3.41, -0.03$] in NO and in the range [$-2.54, -0.32$] in IO. A NO$\nu$A recent analysis \cite{NOvA-CPviol}, excluded at $2\sigma$ C.L. values around $\delta_{\text{CP}} = -\pi/2$ for the NO, and by $> 3\sigma$ values around $\delta_{\text{CP}} = \pi/2$ for the IO. Comparing the best fits of these experiments, it is clear that they agree in the inverted ordering case, but they show tensions in the normal ordering case. This result probably reflects a more pronounced asymmetry in $\nu_e$ versus $\overline{\nu}_e$ observed in T2K \cite{NOvA-CPviol}.  NO$\nu$A and T2K will operate until 2026, with some upgrades, but they will never have the capability to measure $\delta_{\text{CP}}$ with $5\sigma$ significance. 
+Hence, future experiments such as DUNE and Hyper-Kamiokande are needed to measure definitely $\delta_{\text{CP}}$.

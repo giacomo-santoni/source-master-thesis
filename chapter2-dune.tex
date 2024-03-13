@@ -1,0 +1,286 @@
+\label{DUNE-design}
+The Deep Underground Neutrino Experiment (DUNE) will be a long-baseline neutrino oscillation experiment designed to address the unresolved questions of neutrino physics. It will be located in the United States, at the Long Baseline Neutrino Facility (LBNF), which will utilize the neutrino beam produced at Fermilab, in Illinois (Fig. \ref{fig:DUNE_scheme}). DUNE will consist of a Near Detector (ND), located 62 m underground and 574 m away from the target of the primary beam, and a Far Detector (FD), placed 1.5 km underground and 1285 km distant from Fermilab, at the Sanford Underground Research Facility (SURF) \cite{dunecollaboration2022snowmass}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{images/chap2/dune_qualitative_scheme.jpg}
+    \caption{Qualitative scheme of LBNF for DUNE experiment. In blue are shown the already present components, in orange, the future ones \cite{fd_tdr_vol1}.}
+    \label{fig:DUNE_scheme}
+\end{figure}
+
+This chapter provides an overview of the DUNE experiment, including its physical motivations. Furthermore, a more precise description of the Far and Near detectors is outlined. The next chapter will present information on the SAND and GRAIN detectors.
+
+\section{Physical motivations and overview}
+The primary goals of DUNE, as next-generation long-baseline neutrino experiment, are: 
+\begin{itemize}
+    \item performing precise measurements of the oscillation parameters, in particular, neutrino mass ordering, $\delta_{\text{CP}}$ phase, and test the consistency of the three-flavour paradigm;
+    \item carrying on measurements both in astrophysical and particle physics field, studying low-energy neutrinos and neutrinos from supernova bursts;
+    \item searching for hints of BSM-physics.
+\end{itemize}
+
+Given these premises, the design must satisfy many requirements to accomplish these demanding challenges. %the chosen beam will have a power of $1.2$ MW in Phase I, reaching $2.4$ MW in Phase II. T
+First, to precisely study the CP violation and to verify the three-flavour paradigm, neutrinos will be observed over more than one full oscillation period. The beam will be mostly composed of $\nu_{\mu}$, and it will have a peak at about $2.5$ GeV, near the oscillation maximum, with significant rate that covers more than one oscillation period for energies between $0.5$ and $4.0$ GeV, at a fixed baseline of $1300$ km. The contamination from the wrong sign of neutrinos will be less than $5\%$, while the one from electron neutrinos will be less than $1\%$.
+
+The Far Detector will be located $\sim 1300$ km distant from the source. This choice will help in breaking the experimental degeneracy between neutrino mass ordering and the determination of $\delta_{\text{CP}}$. The reason is that the asymmetry $P(\nu_\mu \rightarrow \nu_e)$ and $P(\bar{\nu}_\mu \rightarrow \bar{\nu}_e)$ due to the presence of matter is larger than the one due to the $\delta_{\text{CP}}$ phase \cite{Bass_2015}\cite{DUNE_physics_motivations}. The FD will be located underground to have a very low background from cosmic rays. The Far Detector is planned to be Liquid Argon Time Projection Chambers (LAr TPCs).  
+The TPC combines tracking and calorimetry, and is well suited for identifying the different interaction processes that neutrinos undergo.
+
+The Near Detector will consist of a suite of detectors: a LAr-TPC (ND-LAr), a muon spectrometer (TMS), and a magnetized multi-detector apparatus (SAND) that will be described later in this chapter. The goal of the ND complex is to measure neutrinos before the oscillation phenomenon and to reduce these systematic uncertainties related to flux, cross section and detector response. In particular, for the latter task, the calibration of position and energy deposits from different sources at a few percent level is essential. 
+Since the neutrino cross sections depend on energy, and the neutrino energy spectra at ND and FD are different, it is important to study the data at different neutrino energies. For this reason, the PRISM technique is proposed: it consists in a mechanism that allow ND-LAr and TMS to move off-axis, thus studying the neutrino beam at different off-axis angles.
+
+A photon detection system that collects prompt scintillation light from charged particles will be implemented inside the LAr-TPCs, to determine the 3-D vertex position with a high accuracy, in a joint analysis with the TPC.
+
+The schedule of DUNE is planned in two phases. Phase I aims to start data-taking by the end of the 2020s with the Far Detector which will equipped with only 2 modules (20 kton of fiducial mass). In 2032 the beam, with at least 1.2 MW of power, and the Near Detector will become operational. In this phase, the experiment will be able to resolve the neutrino mass ordering at 5$\sigma$ level with 100 kt-MW-yr exposure and to measure CPV at 3$\sigma$ level with a 100 kt-MW-yr exposure for the maximally CP-violating values $\delta$CP $= \pm \pi/2$. In its second phase, the far detector will be expanded with the addition of two more modules (thus reaching an overall 40 kton of fiducial mass). 
+With the experiment at full capacity, a CP violation significance of 5$\sigma$ will be reached in 7 years if $\delta$CP $= \pm \pi/2$, as discussed in the following sections.
+
+% \begin{table}
+%     \centering
+%     \begin{tabularx}{0.9\linewidth}{c|X|X|X}
+%         \toprule
+%         Parameter & Phase I & Phase II & Impact \\
+%         \hline
+%         FD mass & 20 kton fiducial & 40 kton fiducial & FD statistic \\
+%         Beam power & up to 1.2 MW & 2.4 MW & FD statistic \\
+%         ND config & SAND, ND-LAr, TMS & SAND, ND-LAr, ND-GAr & Syst. constraints \\
+%         \bottomrule
+%     \end{tabularx}
+%     \caption{Description of two-stage building program of LBNF and DUNE \cite{dunecollaboration2022snowmass}.}
+%     \label{tab:build_prog}
+% \end{table}
+
+\section{Physics sensitivity}
+In this section, the expected sensitivity of the experiment is presented. An important parameter in this discussion is the \say{exposure}, a quantity related to the detector size, beam power, and time, measured in kton $\cdot$ MW $\cdot$ yr, which refers to the data accumulated. Here, the sensitivity results corresponding to long baseline oscillation, to supernovae, and to BSM are reported, including the Phase-II program upgrades.
+
+\subsection{Long-baseline neutrino oscillations}
+The analysis, based on Monte-Carlo (MC) simulations performed on the long-baseline oscillation sensitivity, showed that DUNE can establish the neutrino mass ordering, accurately measure  $\delta_{\text{CP}}$ and carry on precision measurements of the long-baseline oscillation parameters. The importance of the results that DUNE can achieve is confirmed by the plots presented in Fig. \ref{fig:CLplots}: at the exposure of $1104$ kton $\cdot$ MW $\cdot$ yr, the allowed regions for $\sin^2\theta_{13}$, $\delta_{\text{CP}}$ and for $\sin^2\theta_{13}$, $\Delta m^2_{32}$ are shrunk, getting closer to the current NuFIT best estimate (true value).
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{images/chap2/CLplots.png}
+    \caption{Plots representing 90\% C.L. regions in the $\sin^2\theta_{13} - \delta_{\text{CP}}$ (a) and $\sin^2\theta_{13} - \Delta m^2_{32}$ (b) planes, obtained with the beam in neutrino and antineutrino mode, in equal amount, and with Phase-II ND. The three colors correspond to different levels of exposure; the yellow area represents the 90\% C.L. region for the NuFIT global fit \cite{dunecollaboration2022snowmass}.}
+    \label{fig:CLplots}
+\end{figure}
+
+\subsubsection{Mass ordering}
+ Two plots are shown in Fig. \ref{fig:MO-plots}: (a) shows the significance for the determination of the neutrino mass ordering as a function of $\delta_{\text{CP}}$ true values, for two different exposures. The solid lines represent the median sensitivity, and the bands limit the 68\% of variations of statistics, systematics, and oscillation parameters. The near-degeneracy between matter and CP violating effects, that occurs close to $\delta_{\text{CP}} = \pi/2$ for normal ordering, gives this characteristic shape to the plot.
+The plot in (b) relates the significance with the exposure in years, for different values of $\delta_{\text{CP}}$. For an exposure of 100 kton $\cdot$ MW $\cdot$ year, DUNE can determine the mass ordering at $5\sigma$ for 100\% of $\delta_{\text{CP}}$ values.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.57]{images/chap2/MO - cp.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.57]{images/chap2/MO - exposure.png}}
+    \caption{Significance of the DUNE determination of the neutrino mass ordering as a function true values of $\delta_{\text{CP}}$ (a) and on the exposure (b) \cite{dunecollaboration2022snowmass}.}
+    \label{fig:MO-plots}
+\end{figure}
+
+\subsubsection{CP violation}
+The plots in Fig. \ref{fig:CPV-plots} show the expected CP violation significance as a function of $\delta_{\text{CP}}$ and of exposure.\\
+The plot (a) is obtained assuming normal ordering and considering two different exposures. The solid line represents the median significance, and the bands cover 68\% of variations of statistics, systematics and oscillation parameters. Here, the significance is maximal for $\delta_{\text{CP}} = \pi/2$ and, for an exposure of 336 kton $\cdot$ MW $\cdot$ yr, it's above 5$\sigma$ for few values.
+In the plot (b), the significance is at 5$\sigma$ for an exposure of about 300 kton $\cdot$ MW $\cdot$ yr if $\delta_{\text{CP}} = -\pi/2$, and for 600 kton $\cdot$ MW $\cdot$ yr of exposure for 50\% of $\delta_{\text{CP}}$ values. For 75\% of $\delta_{\text{CP}}$ values, the exposure needed for a significance of 3$\sigma$ is almost 1000 kton $\cdot$ MW $\cdot$ yr. 
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.57]{images/chap2/CPV - cp.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.57]{images/chap2/CPV - exposure.png}}
+    \caption{Significance of DUNE determination of CP violation as a function of depending on true values of $\delta_{\text{CP}}$ (a) and on the exposure (b) \cite{dunecollaboration2022snowmass}.}
+    \label{fig:CPV-plots}
+\end{figure}
+
+\subsubsection{Oscillation parameters}
+DUNE will be able to measure all the parameters that describe neutrino oscillations. In particular, it will have sufficient sensitivity to the $\theta_{23}$ octant for values of $\sin^2\theta_{23}$ in the range [0.47, 0.55], thus measuring it with at least 1° precision. This can be done through a combined analysis of $\nu_{\mu} \rightarrow \nu_{\mu}$ and $\nu_{\mu} \rightarrow \nu_{e}$ channels.
+
+\subsection{Supernovae and solar neutrinos}
+
+\titleformat{\subsubsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+DUNE Far Detector can detect neutrinos coming from core-collapse supernovae and from the Sun, that have energies between $\sim$ 5 and 100 MeV. \\
+Core-collapse supernovae occur very rarely in our Galaxy, therefore, it is crucial to gather as much data as possible when they occur. The design of the DUNE FD components will take this into account. The expected energy threshold is a few MeV of deposited energy and the expected energy resolution is 10-20\% for these values of energy. The expected event rate for a 40-kton detector is about 3000 neutrinos for a supernova 10-kpc distant.
+In this kind of supernovae, the neutrino signal begins with a short and sharp burst made mostly of $\nu_e$, called \say{neutronization} burst; it is followed by an \say{accretion} phase, of hundreds of milliseconds and by a \say{cooling} phase, of about 10 seconds, that is the bulk of the signal, almost equally shared between the three flavours of neutrinos and antineutrinos. So, neutrinos are present in the processes that occur during the supernova evolution, thus the neutrino signal carries information on its source. Hence, a measurement of a supernova neutrino flux gives the chance to, for example: test stellar evolution models; warn the scientific community of the SN explosion, since neutrino burst happens before the electromagnetic signal; reconstruct the source direction.
+
+Solar and background supernova neutrinos aren't easily detectable, but some studies suggest that a selection of a sample of solar neutrinos is possible. This would be very useful for the measurement of $\Delta m^2_{21}$.
+
+\subsection{Beyond Standard Model physics}
+The deep underground position of the DUNE far detector is a crucial feature in the search for rare processes of Beyond Standard Model physics. Here, some of the BSM phenomena that can be investigated by DUNE are outlined.
+
+\subsubsection{Sterile neutrino mixing}
+Some theories hypothesize the existence of sterile states of neutrinos that, mixing with the known active neutrinos, can be responsible for disagreement with the 3-$\nu$ paradigm. Therefore, in order to ensure the detection of any potential anomalies, DUNE will be sensitive to a wide range of possible sterile neutrino mass splittings and will search for  disappearance of CC and NC neutrino interactions over the long distance between Near and Far Detectors, as well as over the short baseline of the ND. Due to its long baseline, intense beam and large FD, DUNE will provide a greater sensitivity than the existing probes.
+Moreover, models that include sterile neutrinos, either heavy or light, imply that the $3 \times 3$ PMNS matrix is not unitary. This is caused by the presence of sterile neutrinos that mix with active neutrinos, and, if it is of order $10^{-2}$, it can be observed by a decreasing in the event rate at DUNE \cite{fd_tdr_vol2}.
+
+\subsubsection{Non-standard Interactions (NSI)}
+Neutrinos may undergo non-standard interactions (NSI) during their propagation through the Earth. These processes can strongly affect the data to be collected by DUNE, as long as the new physics parameters are large enough. Due to its long baseline and wide-band beam, DUNE will be sensitive to these probes.
+
+\subsubsection{CPT violation}
+DUNE can also improve the present limits on Lorentz and CPT violation by several orders of magnitude, testing their validity. For this goal, atmospheric neutrinos are optimal, since the oscillated flux, which consists of all three flavours of neutrinos and antineutrinos, is sensitive to matter effects and to both $\Delta m^2$ parameters and covers a wide range of $L/E$.
+
+\subsubsection{Neutrino trident production}
+The electroweak process in which a neutrino scatters off a Coulomb field of a heavy nucleus producing a pair of charged leptons is called neutrino trident production. In DUNE, due to the high intensity of $\nu_{\mu}$ flux at ND, there would be enough production rate to observe events of this kind, giving the possibility to improve the current measurements.
+
+\subsubsection{Dark Matter searches} 
+DUNE also includes a dark sector-particle program, with a search for Axion-Like particles and Low-mass Dark Matter (LDM). This will be carried out mainly by the ND: the detector complex will be close enough to the beam source to detect a good amount of Dark Matter candidates, assuming they are produced; in addition, the PRISM capability will increase the control of SM neutrino backgrounds. 
+Furthermore, DUNE will have unique sensitivity for the search of Heavy Neutral Leptons (HNL) and Boosted Dark Matter (BDM). In particular, the far detector will be able to detect BDM signals from several sources in the universe.
+
+\subsubsection{Baryon number violation and proton decay}
+Some theories beyond the Standard Model, called Grand Unified Theories (GUTs), predict the baryon number violation. Under this assumption, proton decay would be possible. DUNE, thanks to its imaging, calorimetric, and PID capability, is expected to be sensitive to many processes that could be potential candidates for a baryon-number violation. These processes are difficult to reconstruct due to the low energy of the final state and the presence of background. In particular, DUNE will search for two proton decay modes: $p \rightarrow e^+ \pi^0$ and $p \rightarrow K^+ \overline{\nu}$. The first has the highest branching ratios among the predicted decays; the second can be exploited particularly in DUNE because stopping kaons have a higher ionization density with respect to lighter particles. Hence, the LAr TPC has to identify a $K^+$ track efficiently. 
+In case of detection of proton decay, its lifetime value will be measured; in case of no detection in 10 years, instead, a lower limit of $1.3 \cdot 10^{34}$ years will be expected.
+Considering the total fiducial volume, DUNE will be able to improve the current limits on proton lifetime by an order of magnitude, with 90\% C.L., after a 20-year run.
+
+\section{DUNE design}
+In this section, the LBNF beam and the detector design are described in detail.
+\subsection{LBNF beam}
+The Long-Baseline Neutrino Facility provides a neutrino beamline and the necessary conventional facilities to satisfy the DUNE science requirements \cite{dunelbnf_cdrvol2}. The beam will travel for 1300 km from Fermilab to the SURF detectors, located 1.5 km underground.
+The energy spectrum of the beam must cover the region of the first two oscillation maxima, that are expected to be at 2.4 GeV and 0.8 GeV, for its baseline. The beam components must be sign-selected, to separate neutrino from antineutrino beam, and in particular, the electron neutrino content must be small to reduce systematic errors.
+Furthermore, the beam must be directed to the far detector with an angular accuracy to allow for the determination of the energy spectrum exploiting the near detector measurements. All of these requirements will be crucial for the determination of the mass hierarchy and the CP phase, and for accurate measurements of the oscillation parameters. Optimization of the beam design can affect in a significant way the exposures needed to reach the desired physics goals, independent of any upgrades to the accelerator.
+
+The LBNF beamline will use the proton beam from the PIP-II upgrade of the Main Injector. It will deliver a proton beam with energy in the range of 60-120 GeV, corresponding to a power of 1.2 MW in Phase I \cite{dunelbnf_cdrvol1}. Future upgrades are already planned, that will enhance the power up to 2.4 MW: for this reason, some components are built taking already into account these improvements.
+The proton beam will be extracted at MI-10 extraction point, and then it will be bent towards the far detector. Hence, a hadronic shower formed mainly by pions and kaons will be produced upon hitting a graphite-beryllium target. These products then will be focused by horns into a $\sim$ 200 m long decay pipe, where they decay mostly into $\mu^{\pm}$ and $\overset{(-)}{\nu_{\mu}}$.
+Here, depending on the mesons' sign selection, the beam will run in either neutrino or antineutrino mode. Almost all the muons are stopped by the shielding walls, but some of them decay and contaminate the beam with electron neutrinos.
+In Fig. \ref{fig:nu_fluxes} the expected energy spectrum and the flux composition at the far detector in both running modes are reported. The plots show a clear abundance of the muon neutrino component, as expected.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.52]{images/chap2/nu.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.52]{images/chap2/antinu.png}}
+    \caption{Neutrino fluxes at far detector with the beam in neutrino (a) and antineutrino (b) mode \cite{dunelbnf_cdrvol2}.}
+    \label{fig:nu_fluxes}
+\end{figure}
+
+\subsection{Far Detector}
+
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+The Far Detector complex of DUNE will be located at SURF, in South Dakota, 1.5 km underground, as Fig. \ref{fig:FD_location} shows. It will consist of four LAr-TPC detectors, each with at least 10 kton of fiducial mass of liquid Argon. These four modules will be placed inside a cryostat of dimensions 15 m $\times$ 14 m $\times$ 62 m, thus containing almost 17.5 kton of total mass \cite{fd_tdr_vol1}. 
+Currently, the choice for the best technology for the detector is under study: the possibilities being considered are single-phase or double-phase detector. The ProtoDUNE program, at CERN, has tested both detector technologies and is still performing studies on these topics. This program exploits prototypes of the future full-scale modules, approximately 1/20 of the size of the final detector but with the same components of the full-scale FD. Data acquisition began in 2018, with the goals of testing the production and quality of the components, validating the installation procedures, operating with cosmic rays to see its performances, and collecting test beam data to measure the detector response. 
+According to the 2020 Technical Design Report (TDR), only three out of four modules are already planned: in particular, two SP modules and one DP module. Recently, the results of ProtoDUNE changed the strategy, showing a preference for another single-phase module instead of a dual-phase. The current proposal provides an horizontal drift SP TPC for module FD1 and a vertical drift TPC for module FD2. The sequence of installation is FD2 first.
+In the next paragraphs, the two TPCs will be described.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chap2/FD_location.png}
+    \caption{Underground caverns for the DUNE FD and cryogenics systems at SURF. The figure shows the first two Far Detector modules in place \cite{fd_tdr_vol1}.}
+    \label{fig:FD_location}
+\end{figure}
+
+\subsubsection{Horizontal drift LAr TPC}
+The horizontal drift LAr TPC is a single-phase detector, in which the charged particles, passing through its volume, ionize the argon atoms. The electrons produced from the ionization drift in a horizontal electric field towards the anode planes, in a few milliseconds. The anode planes used are the APAs (Anode Assembly Planes), that are formed by three layers of active wires that form a grid, with the relative voltage between the layers selected. The voltage is chosen such that the first two layers are transparent to the drifting electrons, inducing a bipolar signal, and subsequently these electrons can be collected by the last layer, resulting in a unipolar signal. In this way, the grid provides the reconstruction of two coordinates. 
+
+The third coordinate is determined using the drift time, considered as the $\Delta t$ between the prompt scintillation light and the arrival time of the electrons on the APAs. Liquid Argon is an excellent scintillator since it produces 40k photons per MeV. On the other hand, the scintillation light is VUV region, with a 127 nm wavelength. Hence, it is shifted into visible light, and then collected by photodetectors, providing the start time $t_0$ for the ionization. The operating scheme of a LAr TPC is reported in Fig. \ref{fig:operating_LArTPC}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{images/chap2/reco_scheme.png}
+    \caption{General operating principle of a single-phase LAr TPC \cite{fd_tdr_vol1}.}
+    \label{fig:operating_LArTPC}
+\end{figure}
+
+In the DUNE experiment, the single-phase LAr TPC will have a mass of 17.5 kton, and it will be located inside a cryostat of 65.8 m $\times$ 17.8 m $\times$ 18.9 m dimensions. The whole volume is separated with alternating cathode and anode walls. A cathode wall consists of an array of 150 Cathode Plane Assemblies, which are 1.2 m $\times$ 4 m panels at -180 kV. An anode wall is formed by 50 APAs, which are modules of 6 m $\times$ 2.3 m, connected to the ground. Inside the drift volume, an electric field of 500 V/m is produced, and the maximum drift length is about 3.5 m. The readout cold electronics are placed at the top end of the top APA and at the bottom end of the bottom APA. The design is shown in Fig. \ref{fig:sp_tpc}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{images/chap2/fd_sp_tpc.png}
+    \caption{DUNE FD single-phase LAr TPC, showing the alternating anode (A) and cathode (C) planes, and the Field Cage that surrounds the drift regions between the planes \cite{fd_tdr_vol1}.}
+    \label{fig:sp_tpc}
+\end{figure}
+
+\noindent The device chosen for the photon detection is the X-ARAPUCA Supercell. The structure and working principle of a single X-ARAPUCA cell is shown in \ref{fig:X-Arap}. Each photon detection module spans the width of the 2.3 m of the APA and is placed behind the anode wire-planes. For each module there are four X-ARAPUCA Supercells with VUV light-transparent dichroic filters, alternated with wavelength shifters (WLS) plates to convert UV photons to visible spectrum at 430 nm. The photons emitted by the WLS plates at a smaller angle than the critical one are detected by the SiPM, otherwise, the photons are reflected back towards the WLS plates by the dichroic filters, being collected by the SiPM.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.2]{images/chap2/X-Arapucas.png}
+    \caption{Working principle of an X-ARAPUCA cell. The VUV scintillation light emitted by the LAr is shifted to the visibile spectrum by the WLS. The escaping photons are reflected back by the dichroic filters and then collected by the SiPM.}
+    \label{fig:X-Arap}
+\end{figure}
+
+The main drawbacks of the DUNE TPC are the LAr purity and the electronic noise. To mantain LAr purity, it is important to keep low the concentration of electronegative and nitrogen contaminants that, respectively, can absorb ionization electrons and quench scintillation photons. For this reason, the electronegative contaminants concentration must be below 100 ppt $\text{O}_2$ equivalent, such that the ionization electron lifetime is above 3 ms, and the SNR is large enough to perform good measurements. The nitrogen contaminants must be below 25 ppm, to have at least 0.5 photoelectrons per MeV detected. This is achieved through the use of a purification system and low-noise cryogenic electronics, which reduce thermal noise.
+
+\subsubsection{Vertical drift LAr TPC}
+For the second module of the DUNE FD, a vertical drift LAr TPC is proposed based on the results of the ProtoDUNE program carried out at CERN \cite{vertical_drift}. This detector is a TPC where the ionization electrons drift vertically, for a maximum of 6.5 m, towards anodes located at the top and bottom of the detector. The cathode hangs at mid-height, as shown in Fig. \ref{fig:vertical-drift}. It is a thin structure to reduce the loss of active volume and it is also 60\% transparent to allow the passage of the Argon. The surrounding field cage ensures an electric field at 500 V/cm.
+The anode planes, of 60 m $\times$ 13.5 m dimensions, are based on perforated printed circuit boards (PCBs), a technology that avoids significant deformations to the planes, that are hung horizontally. Each anode plane consists of two PCB boards.\\
+The photon detectors are based on X-Arapucas, which will be mounted 
+on the cryostat walls, behind a field cage with increased transparency, or on the cathode surface. This system requires novel optoelectronic systems for signal and power transmission: the power of the system will be supplied over fiber and an analog optical transmitter is being developed to transmit the signals of the SiPMs in warm conditions.
+
+Currently, an intense R\&D campaign is being carried on to test and validate the system. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{images/chap2/vertical_drift.png}
+    \caption{Scheme of the vertical-drift LAr TPC \cite{vertical_drift}.}
+    \label{fig:vertical-drift}
+\end{figure}
+
+\subsection{Near Detector}
+The Near Detector, shown in Fig. \ref{fig:ND}, is a complex of detectors located 574 m away from the source of the LBNF beam and 62 m underground. In Phase I, it will consist of three detectors: SAND, ND-LAr and TMS. In Phase II, the TMS will be replaced by ND-GAr \cite{nd_cdr}.
+Together with the FD, ND will be involved in the measurements of the CP violating phase, the determination of the mass ordering, the measurement of the mixing angle $\theta_{23}$ and its octant and the test of the three-neutrino paradigm. Furthermore, one of the general issues is the difficulty in reconstructing the energy spectrum, that is an unresolved convolution of cross section, flux and energy response, due to the finite energy resolution and non-zero biases. Hence, this requires the ND to outperform the FD and to independently constrain each quantity. The ND is expected to characterize with high statistic the beam close to the source: the data collected from the ND can be compared with the FD ones to reduce systematic uncertainties and to improve beam and neutrino interaction models. In addition, thanks to the Precision Reaction Independent Spectrum Measurement (PRISM) program, it will acquire data at different off-axis beam positions, thus with different energy spectra, allowing DUNE to deconvolve the beam and cross section models and constrain each component separately. 
+So, the energy spectrum of neutrinos can be measured by both FD and ND, with the differential rates of $\nu_e$ and $\nu_{\mu}$, given by the Eqs. \ref{FD_rate}, \ref{ND_rate}.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.13]{images/chap2/ND 1.png}}
+    \subfigure[]{\includegraphics[scale=0.13]{images/chap2/ND 2.png}}
+    \caption{Design of the DUNE ND complex, with component detectors all on-axis (a) and with ND-LAr and ND-GAr off-axis (b). The beam axis and direction is indicated by the yellow arrow \cite{nd_cdr}.}
+    \label{fig:ND}
+\end{figure}
+
+\begin{equation}
+\label{FD_rate}
+    \frac{dN^{FD}_{\nu_x}}{dE_{rec}} = \mathcal{N}^{FD} \int \Phi^{FD}_{\nu_{\mu}}(E_\nu) P_{\nu_{\mu}\rightarrow \nu_x}(E_\nu) \sigma^{Ar}_{\nu_x}(E_\nu)R^{Ar}_{\nu_x}(E_\nu, E_{rec}) \epsilon^{FD}_{\nu_x}(E_\nu, E_{rec}) \,dE_\nu, 
+\end{equation}
+
+\begin{equation}
+\label{ND_rate}
+    \frac{dN^{ND}_{\nu_x}}{dE_{rec}} = \mathcal{N}^{ND} \int \Phi^{ND}_{\nu_{\mu}}(E_\nu) P_{\nu_{\mu}\rightarrow \nu_x}(E_\nu) \sigma^{Ar}_{\nu_x}(E_\nu)R^{Ar}_{\nu_x}(E_\nu, E_{rec}) \epsilon^{ND}_{\nu_x}(E_\nu, E_{rec}) \,dE_\nu, 
+\end{equation}
+
+where $\mathcal{N}$ is a normalization factor, $E_\nu$ is the true neutrino energy, $E_{rec}$ is the reconstructed one, $\sigma_\nu$ is the neutrino interaction cross section, $R_\nu$ is the probability that a neutrino produces a charged particle and $\epsilon_\nu$ is the detector efficiency.
+In order to reconstruct neutrino events, understanding neutrino interactions in LAr is a fundamental task. They can be considered as collisions with nucleons, with a possible subsequent scattering where the nucleons can produce mesons. Then, the mesons, crossing the nucleus, can interact with other nucleons. These processes are the main ones responsible for the systematic uncertainties in the interactions. 
+
+The DUNE experiment will search for quasi-elastic scattering (QE), resonance production (RES) and deep inelastic scattering (DIS), thus in the energy region between 0.5 GeV and 10 GeV. In particular, SAND aims to constrain these interactions in LAr: indeed, even a small variation in the computation of a relative uncertainty can significantly affect the sensitivity to the parameters of interest, increasing the exposure needed to reach the 5$\sigma$ significance for claiming a discovery.
+
+In the next paragraphs, ND-LAr, TMS and ND-GAr will be described. SAND will be outlined in the next chapter.
+
+\subsubsection{ND-LAr}
+In order to reduce cross section and detector systematic uncertainties for oscillation analysis, the ND target material must be the same as that of the FD one, i.e. liquid Argon. At the Near Detector, the neutrino flux and the event rate will be high enough to cause pile-up issues in a traditional TPC. To solve this problem, the ND-LAr, shown in Fig. \ref{fig:ND-LAr}, will be built on the base of ArgonCube technology: the detector is modularized to improve drift field stability, to reduce the high voltage and purity requirements; the charge readout is pixelized, to provide 3D imaging of particle interactions; new light detection techniques are proposed to increase the light yield. Furthermore, the dead material due to the modularization will be minimized using a resistive field shell instead of traditional field shaping rings. This subdivision of the volume will allow shorter drift times and distances and will reduce the overlapping interactions. 
+
+The detector will be 5 m (along beam) $\times$ 7 m (transverse to the beam) $\times$ 3 m (height) of dimensions, with 67 ton of fiducial mass, optimized to ensure hadronic showers containment and to provide enough statistics ($1 \times 10^8$ $\nu_\mu$ events per year).
+
+ND-LAr will be also able to deal with a large number of neutrino interactions in each spill. The LBNF neutrino beam will consist of 10 $\mu$s wide spill, with $\mathcal{O}$(ns) structure, delivered at $\sim$ 1 Hz rate. Hence, neglecting the cosmic rays, that have a low rate ($\sim$ 0.3 per spill at 60-m depth), $\mathcal{O}$(50) interactions per spill are expected.
+
+The 3D pixel charge will be read out continuously. The slow drifting electrons will be read out with an arrival time accuracy of 200 ns and a corresponding charge amplitude within $\sim$ 2 $\mu$s-wide bin. This, together with the spill width, will give a position accuracy of $\sim$ 16 mm. Even if this is an already good spatial resolution, the light system of ND-LAr will provide a more accurate time-tag of the charge, associating all charges to the proper neutrino event and rejecting the pile-up of charges from other neutrino signals.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.1]{images/chap2/ND-LAr.png}
+    \caption{Design of the ND-LAr detector, with zoom on the detector modules and read out \cite{nd_cdr}.}
+    \label{fig:ND-LAr}
+\end{figure}
+
+\subsubsection{TMS}
+ND-LAr will be optimized to contain hadronic showers, but its acceptance for muons with momentum larger than $\sim$ 0.7 GeV/c will be low. For this reason, in Phase I, an additional spectrometer, called The Muon Spectrometer (TMS) will measure the properties of the muons that escape ND-LAr (Fig. \ref{fig:TMS}).
+
+TMS will be made of a magnetized range stack with 100 layers, with dimensions 7.4 m (width) $\times$ 5 m (height) $\times$ 7 m (depth). Each plane will be made of 192 scintillator slats, 3.5 wide and read out by SiPMs, separated by steel plates 15-mm thick in the 40 layers upstream and 40-mm thick in the 60 layers downstream. 
+The magnetic field of 0.5 T will allow TMS to reconstruct the muon charge sign and the momentum up to $\sim$ 5 GeV with $\sim$ 5\% resolution.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{images/chap2/TMS.png}
+    \caption{Design of the TMS detector.}
+    \label{fig:TMS}
+\end{figure}
+
+\subsubsection{ND-GAr}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.18]{images/chap2/ND-GAr.png}
+    \caption{Design of ND-GAr, showing the HPgTPC, the pressure vessel, the ECAL, the magnet. The muon-tagging detectors are not shown \cite{nd_cdr}.}
+    \label{fig:ND-GAr}
+\end{figure}
+
+\noindent In Phase II, TMS will probably be replaced by ND-GAr, shown in Fig. \ref{fig:ND-GAr}. It will be a magnetized detector system consisting of a high-pressure gaseous argon TPC (HPgTPC) surrounded by an electromagnetic calorimeter (ECAL), both in a 0.5 T magnetic field and a muon system.
+
+Basically, it will be a gas-filled cylinder with a high-voltage electrode at mid-plane, that provides the drift field for ionization electrons. The gas chosen for this purpose is an Ar-CH\textsubscript{4} mixture, 90\%-10\% (molar fraction), at 10 bar. In ND-GAr, the structure will be organized such that the magnetic and the electric fields are parallel, to reduce transverse diffusion thus giving better point resolution. The end plates of the cylinder, where the primary electrons drift, will be provided with multi-wire proportional chambers (MWPCs), that start avalanches (that is, gas gain) at the anode wires. Signals proportional to the avalanches are induced on cathode pads located behind the wires. The hit position reconstruction will be given by the induced pad signals for two of three coordinates, for the third one the drift time will be exploited.
+
+ND-GAr will collect $\sim 1.6 \times 10^6$ $\nu_\mu$ CC events per year, given its 1-t fiducial mass. These events can be studied with a very low momentum threshold for charged particle tracking and with systematic uncertainties that differ from those of the liquid detectors. Since it can access lower-momentum protons and has PID capabilities better than ND-LAr one, it will be very useful for the study of charged particles' activity near the interaction vertex. The misidentification of $\pi$ as knocked-out protons can cause significant mis-reconstruction of neutrino energies and event topologies in the LAr TPCs.
+
+
+
+
+

@@ -1,0 +1,197 @@
+\label{ML-chapter}
+Not all the scintillation light is produced in the fiducial volume; some is also produced inside a camera when a particle crosses it. Because this light is not \emph{encoded} by the mask the reconstruction technique cannot be applied to it. As a preprocessing step, the cameras that suffer from this issue need to be excluded.
+
+\section{The problem of dazzled camera recognition}
+\label{ML-intro}
+The filtering of GRAIN data is performed immediately prior to the reconstruction step of the simulation chain shown in Fig. \ref{fig:sim-chain}. The particles' propagation and their energy release largely influence the collection of scintillation light in the sensors, resulting in varying light patterns on the sensor matrix depending on the location of the photon emission. 
+There are three possible cases: 
+\begin{itemize} 
+    \item the photons are emitted outside the camera, then all of them are filtered by the mask and observed on the sensors (the camera is called \say{non-dazzled})(see Fig. \ref{fig:cam_cases}.a);
+    \item the particle hits directly the sensors with a peak amplitude in a narrow region (the camera is called \say{dazzled})(see Fig. \ref{fig:cam_cases}.b);
+    \item the particle passes within the camera volume without hitting the sensor, and only part of the photons pass through the mask (this case is also considered \say{dazzled}) (see Fig. \ref{fig:cam_cases}.c). 
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap4/scheme+non-dazzled.png}}
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap4/scheme+dazzled.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.35]{images/chap4/scheme+unclear.png}}\hfil
+    \caption{(a) non-dazzled camera; (b) dazzled camera; (c) dazzled camera, with an unclear light pattern, each with an example corresponding camera-photon scheme.}
+    \label{fig:cam_cases}
+\end{figure}
+
+Currently, the reconstruction algorithm does not utilize the dazzled cameras. They have been excluded using the Monte Carlo truth by verifying if there is an energy deposit inside the cameras. However, when reconstructing events from real data, GRAIN will require a classification that relies only on the data itself.
+This chapter will present a project that aims to classify cameras as either \say{non-dazzled} or \say{dazzled}, relying on a data-driven approach. The proposed solution is based on Deep Learning, using a Convolutional Neural Network (CNN). The next sections will discuss the dataset used, the chosen method, and its results. 
+
+\section{A Deep Learning approach}
+Deep learning is a subset of machine learning characterized by neural networks. Neural Networks are basically models organized in layers, i.e., a sequence of simple transformations applied to the input data according to the layer's weights \cite{deep-learn-python}. They are commonly used for supervised learning problems, where the model receives in input a set of pairs ($X_i, y_i$), with $i=1,...,N$, and it learns to predict $y_i$ by observing $X_i$. The input data can be of several types, and in case of a finite set of $y_i$, the problem will be defined as \textit{classification problem}. The network learns during the training process, where at each step, looking at the \textit{training} dataset, it produces a tentative $\Tilde{y}_i$ and compares it to $y_i$ through a loss function. Then, it updates its parameters (the weights of the layers), in order to move towards the minimum of the loss function. In this phase, the performance is monitored on the \textit{validation} dataset.
+Once the training is completed, the neural network is tested on the separated and unseen \textit{test} dataset.
+
+The primary goal of neural networks is to \textit{generalize} the task on never-before-seen data. A limitation is usually the \textit{overfitting}, which occurs when the network optimally performs on train data but fails on other data. \\
+The network's structure varies depending on the specific problem, and several software libraries allow to implement neural networks. The most used is the \textit{Tensorflow} open source library, together with \textit{Keras}, a wrapper that can work on top of Tensorflow, as done in this case. Further details on the model chosen in this project are discussed in Sec. \ref{cnn-model}.
+
+\subsection{Simulated dataset}
+We simulated 10 000 neutrino events with the same spectrum of the DUNE beam, divided in 10 files.
+% Ten files from the detector response simulation containing 1000 simulated neutrino events each were available for the analysis. 
+The detector response was simulated with the configuration described in Chap. \ref{simulation-section} These data provide information on the number of photons impinging on each sensor matrix pixel.
+
+The output of the optical simulation contains the MC truth of data, and it will be used to label the data for the CNN training. It is a ROOT file: each camera is a ROOT Tree, and each Tree has some variables organized in TBranches, such as the energy, the space coordinates and momentum components. The variable of interest is the number of photons produced within the camera and detected by the sensor, called \textit{inner photons}.
+
+The simulated data need to be labelled before being passed to the neural network.  Let us define, then, the ratio between inner photons and total photons produced by a particle in LAr:
+
+\begin{equation}
+    r = \frac{N_{\text{inner photons}}}{N_{\text{total photons}}}   
+\end{equation}
+
+The cameras will be labelled according to the following label criterion:
+\begin{itemize}
+%\renewcommand{\labelitemi}{\normalfont -}
+    \item \textbf{non-dazzled} ($ND$), if $r < 0.1$,
+    \item \textbf{dazzled} (\textit{D}), if $r \geq 0.1$.
+\end{itemize}
+
+The absolute number of photons produced within the camera is not always indicative of the dazzling of a camera. Sometimes, in fact, despite a high number of inner photons, the number of photons produced in the rest of the detector can be significantly higher. This can occur in situations such as the third case presented in Fig. \ref{fig:cam_cases}.c, where the particle starts emitting outside the camera and continues in its inner volume. For this reason, we chose a criterion that depends on the ratio between the inner and the total number of photons produced, as presented in Fig. \ref{fig:ratio-inner-total}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/chap4/ratio_inner-total.png}
+    \caption{Distribution of the ratio between the inner photons and the total photons, with the red line at a value of 0.1.}
+    \label{fig:ratio-inner-total}
+\end{figure}
+
+\subsection{Preprocessing and augmentation}
+Two files were selected for analysis due to computational constraints, resulting in 120 000 simulated cameras available for use. First, we applied a cut to esclude the cameras with less than 40 photons, as they do not provide enough information for the track reconstruction. This reduced the dataset by $\sim 21\%$.
+
+The most relevant feature of this dataset, however, is its imbalance towards the non-dazzled cameras, with a percentage of 98.5\% $ND$ - 1.5\% $D$. With this kind of data, a neural network would be optimal in finding the non-dazzled cameras, but only because they are in higher amounts. For this reason, the amount of dazzled cameras was enlarged in two ways to re-balance the problem. First, we performed an augmentation on the dataset by extracting from the remaining eight simulated files, only the dazzled cameras, obtaining a percentage of 91.4\% $ND$ - 8.6\% $D$. Then, the dataset was split into train, validation and test datasets, with the scheme 80\% - 10\% - 10\%. In the end, another augmentation was applied on both train and validation datasets, increasing the dazzled percentage up to 48\%. 
+
+\textit{Data augmentation} is a technique widely used in the computer vision field with deep learning models. Through this tool, it is possible to generate more data from the existing samples, \textit{augmenting} them by applying random transformations (such as rotation, zoom, flip...) that produce images similar to the real ones \cite{CNN-book}. In this way, the model never sees two identical images, reaching a better generalization. Data augmentation is usually used when there are few training samples or when the dataset is imbalanced, as in this case. 
+
+The augmentation in this problem is produced applying the transformations of the  \texttt{RandomFlip}, the \texttt{RandomRotation} and the \texttt{RandomZoom} layers. They randomly flip (horizontally or vertically), rotate and zoom the image, respectively, according to given options.
+
+After this preprocessing phase, the data are organized as follows: 
+\begin{itemize}
+    \item training dataset: $\sim 10^6$ images,
+    \item validation dataset: $\sim 10^5$ images,
+    \item test dataset: $\sim 10^5$ images.
+\end{itemize}
+
+\subsection{CNN Model}
+\label{cnn-model}
+When dealing with image classification problems, it is common practice in literature to use Convolutional Neural Networks (CNNs). 
+CNNs come from studies on the brain's visual cortex, and, since the ‘80s, they have been used for image recognition. However, in the last decade, they have undergone a notable improvement. They rely on \textit{convolutional layers}, which are the building blocks of a CNN. The artificial neurons, i.e., the computational nodes of the network, in the first convolutional layer are connected only to pixels in their receptive fields. Each neuron, then, is connected to other neurons positioned inside a small area, and so on (see Fig. \ref{fig:CNNs}). In this way, the network can extrapolate low-level features from the first layer, assembling them into higher-level features in the subsequent layers \cite{deep-learn-python}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.35]{images/chap4/cnns.png}
+    \caption{CNN layers with rectangular local receptive fields \cite{CNN-book}.}
+    \label{fig:CNNs}
+\end{figure}
+
+The convolution is done by a \textit{kernel}, usually a $3\times3$ matrix, that slides over the input image, considered as a 3D matrix (height, width, channels). According to a step called \textit{stride}, it stops at every possible location, doing element-wise matrix multiplication. The values pass through the activation function and then are put into the feature map. 
+
+The \textit{activation function} is a fundamental parameter for the network layers, as it returns the output of a node inside a layer. Usually, these are non-linear functions: introducing non-linearity allows the network to perform more complex tasks. 
+
+Particular attention is given to the edges of the input image: to avoid a loss of information from that region maintaining the input dimensions, usually \textit{padding} operation is applied. Shrinking the input image with no padding would lead to low-dimensional representations without some relevant information. However, dimensionality must be reduced to improve the training time and to fight overfitting. The \textit{pooling layer} accomplishes it, downsampling each feature map independently, reducing the height and the width but not the depth (see Fig. \ref{fig:padd-pool}).
+
+\begin{figure}[h!]
+    \centering
+    \subfigure[]{\includegraphics[scale=0.25]{images/chap4/padding.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.45]{images/chap4/pooling.png}}
+    \caption{(a) example of padding application with stride 1; (b) example of application of a MaxPooling layer with 2$\times$2 kernel and stride 2. This layer reduces the dimensions by extracting the maximum value in the kernel selection.}
+    \label{fig:padd-pool}
+\end{figure}
+
+The CNN model chosen in this case is presented in Fig. \ref{fig:model-archit}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{images/chap4/model-archit-table.png}
+    \caption{CNN model architecture.}
+    \label{fig:model-archit}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \subfigure[]{\includegraphics[scale=0.5]{images/chap4/relu3.png}}\hfil
+    \subfigure[]{\includegraphics[scale=0.5]{images/chap4/sigmoid3.png}}
+    \caption{(a) Rectified Linear Unit (ReLU) function and (b) sigmoid function used in the CNN model, with the corresponding analytic expressions \cite{activ-func}.}
+    \label{fig:activ-func}
+\end{figure}
+
+It takes in input the images with dimensions [32,32,1], processing them with four convolutional layers \texttt{Conv2D}, with filters' sequence 128-64-32-16. In each layer, the kernel has dimensions 3$\times$3, the activation function is ReLU (see Fig. \ref{fig:activ-func}.a), and the padding option is active. After each convolutional layer, there is a \texttt{MaxPooling2D} layer which downsamples the feature map with a pooling window size 2$\times$2. The \texttt{Flatten} layer reduces the feature map from [2,2,16] to a 1D array of 64 elements. At this point, the feature map passes through four \texttt{Dense} layers, with the ReLU activation function, that are fully connected to the nodes of the previous layer. The regularization option present here is a technique to mitigate overfitting: it constrains the network’s weights to take only small values, making the weight distribution more regular by adding a cost to the loss function when it is associated with large weights. In particular, in the \textit{L2 regularization}, the cost added is proportional to the square of the value of the weight coefficients \cite{deep-learn-python}. At last, a \texttt{Dense} layers return the output of the model, using a sigmoid activation function (see Fig. \ref{fig:activ-func}.b). 
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Model parameters}} \\ 
+        \hline
+        \hline
+        batch size & \texttt{32} \\
+        \hline
+        input shape & [32,32,1]\\
+        \hline
+        number of epochs & 10\\
+        \hline
+        metric & \texttt{F1Score}\\
+        \hline
+        loss function & \texttt{BinaryCrossentropy}\\
+        \hline
+        callback & \texttt{EarlyStopping}\\
+        \hline
+        optimizer & \texttt{SGD}\\
+        \hline
+    \end{tabular}
+    \caption{Parameters of the model.}
+    \label{tab:model-pars}
+\end{table}
+
+In Tab. \ref{tab:model-pars}, the main parameters of the model are presented. The batch size (the number of training samples used in one iteration) is set to 32, as is common practice in machine learning. The input shape is [32,32,1] because the cameras have 32$\times$32 pixels and one colour channel. The number of epochs, where an \textit{epoch} is each iteration over all the training data, is fixed to 10, nevertheless the \texttt{EarlyStopping} callback option allows the model to stop the training when there are no more improvements in the learning process. Given that this is a binary classification problem, the \texttt{BinaryCrossentropy} is a well-suited loss function. Furthermore, to evaluate the model by its capacity to reduce the number of misclassifications, the \texttt{F1Score} metric is used. It considers both the precision and the recall and is defined as: 
+
+\begin{equation}
+    F1 = 2 \cdot \frac{precision \cdot recall}{precision + recall} = \frac{TP}{TP + \frac{1}{2}(FP + FN)}
+\end{equation}
+
+where $precision = \frac{TP}{TP + FP}$ and $recall = \frac{TP}{TP + FN}$. In classification problems, $TP$ indicates true positives (well-identified $D$ cameras), $FP$ false positives ($ND$ cameras classified as $D$), $FN$ false negatives ($D$ cameras classified as $ND$) and $TN$ true negatives (well-identified $ND$ cameras).
+The Stochastic Gradient Descent \texttt{SGD} \cite{SGDoptimizer} optimizer is chosen.
+
+\section{Results}
+After preprocessing the data and building the CNN architecture, the model was trained for several epochs managed by the \texttt{EarlyStopping} callback. During the training, the \texttt{F1Score} metric and the loss function have been monitored for both the training and the validation datasets. The score increases approaching $\sim$ 1, while the loss decreases to $\sim 0.1$, as Fig. \ref{fig:trends} shows. The better value of the validation score and loss is probably due to the regularization option in the model, which only acts on the training set and increases the loss function value.
+
+\begin{figure}[h!]
+    \centering
+    \subfigure[]{\includegraphics[scale=0.3]{images/chap4/f1score.png}}
+    \subfigure[]{\includegraphics[scale=0.3]{images/chap4/loss.png}}
+    \caption{Trends of (a) \texttt{F1Score} metric and (b) loss function over 10 epochs for training and validation datasets.}
+    \label{fig:trends}
+\end{figure}
+
+Once the training was completed, the model was applied to the test dataset to evaluate its performance on never-seen-before data. The confusion matrix is shown in Tab. \ref{tab:conf-matrix}. Although the predicted $ND$ cameras include a part of true $D$, the purity of the dataset increases after the CNN classification. At the beginning the dataset purity is $p_i = \frac{TN + FP}{N_{tot cameras}} \sim 0.91$; after the algorithm processing, it reaches $p_f = \frac{TN}{TN+FN} \sim 0.98$. This means that there is an improvement since the relative abundance of $D$ cameras in the dataset is reduced. The corresponding \texttt{F1Score} is $\sim 0.85$.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{cc|cc|}
+    \cline{3-4}
+    &   & \multicolumn{2}{c|}{\textbf{Predicted labels}} \\ %\cline{3-4} 
+    &   & \multicolumn{1}{c|}{\small{$ND$}}       & \small{$D$}  \\ \hline
+    \multicolumn{1}{|c}{\multirow{2}{*}{\textbf{True labels}}} & \small{$ND$} & \multicolumn{1}{c|}{TN: 9113} & FP: 56 \\ 
+    \cline{2-4} 
+    \multicolumn{1}{|c}{} & \textit{\small{D}} & \multicolumn{1}{c|}{FN: 192} & TP: 716\\ 
+    \hline
+    \end{tabular}
+    \caption{Confusion matrix obtained from this model.}
+    \label{tab:conf-matrix}
+\end{table}
+
+As explained at the beginning, this deep-learning algorithm should be applied before the reconstruction step of Fig. \ref{fig:sim-chain}. It has, indeed, to accomplish the rejection of the $D$ cameras, that up to now has been done with MC truth. To observe the effects of this MC truth exclusion, in Fig. \ref{fig:ev-comparison} we present the emitted photons estimate distribution per voxel performed for an event were the proton crosses a camera, including and excluding the $D$ one.
+
+\begin{figure}[h!]
+    \centering
+    \subfigure[]{\includegraphics[scale=0.499]{images/chap4/ev-with-dazzled.png}}
+    \subfigure[]{\includegraphics[scale=0.499]{images/chap4/ev-not-dazzled.png}}
+    \caption{(a) 3D event reconstruction with all the cameras and (b) excluding the dazzled one. The pink and blue arrows represent the true directions of the proton and of the muon, respectively. The red rectangles correspond to the cameras. The score values of the selected voxels in the reconstruction distribution are shown in the histogram on the right. Note that the muon becomes visible in the second image after filtering the dazzled camera that was hit by the proton.}
+    \label{fig:ev-comparison}
+\end{figure}
+
+\subsubsection{Further improvements}
+Despite the positive results, further steps can be taken to improve the model's performance. It must be noted that the data are not so clearly distinguishable between dazzled and non-dazzled since sometimes even a $D$-labelled camera looks like an $ND$-one, or vice versa, making the task very complex. One possible improvement is to redefine the labelling criterion by defining three categories.  In addition to distinguishing non-dazzled cameras, further differentiation can be made among dazzled cameras by considering those where the particle directly hit the sensor and those where the particle emitted photons within the camera without hitting the sensor.

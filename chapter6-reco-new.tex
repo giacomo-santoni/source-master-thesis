@@ -1,0 +1,242 @@
+\label{reco}
+In this chapter we present the process of track reconstruction for a selection of neutrino charge-current quasi-elastic (CCQE) interaction events in GRAIN. We show the several algorithms applied to the distribution of photon sources in order to estimate the particle directions. As a final step, we discuss the residuals between these reconstructed quantities and the MC-truth ones to assess the performance of the algorithm.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.48]{images/chap4/ev-not-dazzled.png}
+    \caption{Example of the 3D reconstruction of the voxel scores, with the pink and blue arrows representing the true directions of the proton and of the muon, respectively. The red rectangles correspond to the cameras. The score values of the selected voxels in the reconstruction distribution are shown in the histogram on the right.}
+    \label{fig:example-ev}
+\end{figure}
+
+\section{Reconstruction analysis process}
+The simulation process described in Section \ref{simulation-section} produces a 3D reconstruction of the voxel scores within each voxel. The voxel side is 12 mm. This output is obtained by applying the ML-EM algorithm, with 500 iterations. Additionally, to avoid artifacts of the algorithm, we excluded the regions of the volume within 5-voxel distance from the mask faces. An example is shown in Fig. \ref{fig:example-ev}.
+
+The reconstruction analysis process of an event is accomplished by first selecting voxels with score above a fixed threshold and then implementing the DBSCAN clustering algorithm \cite{DBSCAN} on the distribution of voxels. The subsequent step involved the use of a \textit{local principal curve} algorithm \cite{LPC-algo} to find a set of points. From these points, we identified the collinear ones and associated them to their corresponding track using the \textit{Hough transform} \cite{Hough-transf}. In the end, we applied a linear fit to these points, determining the directions of the particles produced. 
+
+\section{Track finding}
+In the following, we discuss the methods used to find the track points.
+
+\subsubsection{Score-based voxel selection}
+The aforementioned simulation output provides the estimate of the number of photons emitted in each voxel, called $score$. However, this output features a large background, as many voxels present a non-zero voxel score.
+This non-zero background makes it difficult to identify the true path of the particles. \\ To obtain a sharper voxel distribution without losing too much information, we applied a cut on the voxels with a score less than 100, that corresponds to less than the 0.5\% of the average maximum, setting them to 0.
+Fig \ref{fig:ev-cut} illustrates an event before and after the application of this cut.
+
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[scale=0.51]{images/chap5/ev_lowcut.png}}
+    \subfigure[]{\includegraphics[scale=0.51]{images/chap5/evcut100.png}}
+    \caption{(a) Voxel distribution with a score above 0.1; (b) Voxel distribution with a score above 100. The pink and blue arrows represent the true directions of the proton and of the muon, respectively. The red rectangles correspond to the cameras. The score values of the selected voxels in the reconstruction distribution are shown in the histogram on the right.}
+    \label{fig:ev-cut}
+\end{figure}
+
+\subsubsection{Clustering algorithm}
+At times, the events may present clusters due to the presence of multiple tracks. This is particulary evident in case of neutral particles: as they do not release energy, we see only the track of their decay products.
+Furthermore, sometimes, the event reconstruction does not give a set of voxels with uniform score along the particle tracks. This, together with the application of the cut, leads to a further formation of disconnected clusters of voxels belonging to the same track. Therefore, to identify the necessary clusters for our reconstruction process while discarding isolated voxel caused by reconstruction artifacts, we utilized the DBSCAN algorithm.
+
+The Density-Based Spatial Clustering for Applications with Noise (DBSCAN) algorithm \cite{DBSCAN} is an unsupervised learning clustering technique based on the assumption that clusters are dense regions in space, separated by regions of lower density. This algorithm assigns each point to a specific cluster by looking at the density of the points around it. It requires two input parameters: \textit{epsilon} $\epsilon$, that is the radius of the circle to be created around each point to check the density, and \textit{minPoints}, that is the minimum number of points required inside that $\epsilon$-circle for that data point to be classified as a Core point. 
+Hence, the points are clusterized as follows (see Fig. \ref{fig:dbscan-example}):
+\begin{itemize}
+    \item \textbf{Core} point, if the $\epsilon$-circle contains at least a number of points equal to \textit{minPoints};
+    \item \textbf{Border} point, if the $\epsilon$-circle contains a number of points less than \textit{minPoints};
+    \item \textbf{Noise} point, if there are no points inside $\epsilon$-circle.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{images/chap5/dbscan-example.png}
+    \caption{Example of DBSCAN application with $minPoints = 5$. \cite{dbscan-example}}
+    \label{fig:dbscan-example}
+\end{figure}
+
+DBSCAN algorithm can be applied to 3D data, as in our case. The parameters chosen in our application are $minPoints = 6$, as suggested in \cite{dbscan-minPoints} and $\epsilon = 36 $ mm, which corresponds to 3 times the voxel size.
+
+\subsubsection{LPC algorithm and refinement}
+Once all the clusters of voxels have been found, we consider the centre of each voxel belonging to the same cluster. Hence, the problem became finding the best curve passing through these points. This is a widely-discussed issue in literature, with many proposed methods. The principal component analysis (PCA) \cite{PCA} and, its natural extension, the principal curves algorithm \cite{princ-curvesHS}, are common tools.
+A principal curve is defined as one-dimensional smooth curve that pass through the \say{middle} of a $d$-dimensional data set.
+
+In our application, we have chosen the \textit{local} principal curve algorithm, that is a variant of the principal curve.
+It follows a \say{bottom-up} approach, by considering at every step the data in the local neighbourhood of the considered point. In the end, it finds a series of local centres of mass that form the \textit{local principal curve}. The main advantage is that it is more flexible and less computationally expensive \cite{lpc-definition} with respect to the principal curve algorithm.
+
+The \lpc algorithm \cite{LPC-algo} is a method based on the \textit{mean shift} procedure, i.e., a process that moves a point to the local mean of the data around this point. \\In our case, the algorithm receives in input a set of points $X_i (x,y,z)$, and, choosing an initial location $u$, it finds the so-called \lpc points, following this iterative procedure:
+\begin{enumerate}
+    \item computes the local centre of mass: 
+    
+    \begin{equation}
+        m\left(u_{\ell}\right) \equiv u_{\ell}+s\left(u_{\ell}\right)
+    \end{equation}
+    
+    \item finds the next local neighbourhood location: 
+    
+    \begin{equation}
+        u_{\ell+1} = m(u_\ell) + t \times \gamma_\ell
+    \label{2-step}
+    \end{equation}
+    
+\end{enumerate}
+
+In the first step, chosen a location $u$, the algorithm computes the local centre of mass by \say{moving} the location towards a denser region of the data space. This is done by adding the so-called \textit{mean shift}, defined as: 
+
+\begin{equation}
+    s(u) = \frac{\sum^N_{i=1}w_i(u)(X_i - u)}{\sum^N_{i=1}w_i(u)}
+\end{equation}
+
+where $w_i(u)$ are the weights, which determine the size and the shape of the local neighbourhood at the chosen location $u$. Commonly, they are described through the Gaussian density function:
+
+\begin{equation}
+    w_i(u)=\frac{Q_i}{(2 \pi)^{3 / 2} h^3} \exp \left\{-\frac{1}{2 h^2}\left(X_i-u\right)^T\left(X_i-u\right)\right\}
+\end{equation}
+
+where $Q_i$, in our case, is the score for the voxel centre $i$, and $h$ is a constant bandwidth parameter that steers the size of the local neighbourhood. 
+If this step is repeated iteratively, computing naively $m_{\ell + 1} = m_{\ell} + s(m_{\ell})$, the algorithm can easily find the convergence at a local mode $u_m$ where $s(u_m) = 0$. Despite this can be an appealing property, it has the drawback of getting trapped in the local modes without moving beyond them. For this reason, it is necessary to introduce the second step presented in Eq. \ref{2-step}.
+
+In the second step, given the local mean $m(u_{\ell})$, the \lpc algorithm finds the next local neighbourhood location by moving one step $t$ in the direction defined by the normalised eigenvector $\gamma (u)$ that corresponds to the largest eigenvalue of the local symmetric $3 \times 3$ covariance matrix, defined as:
+
+\begin{equation}
+    \Sigma (u) = \frac{1}{\sum^N_{i=1}w_i(u)}\sum^N_{i=1}w_i(u)(X_i - u)(X_i - u)^T
+\end{equation}
+
+Actually, $\gamma_{\ell}$ is multiplied by an angle penalization term $a = |{\cos \phi}|^\alpha$, with $\alpha = 2$ usually, to reduce the probability of the algorithm deviating too much from the principal direction of the points. Hence, the computation of $\gamma_{\ell}$ becomes: 
+
+\begin{equation}
+    \gamma_{\ell} := a\gamma_{\ell} + (1 - a)\gamma_{\ell - 1}
+\end{equation}
+
+Then, the set of \lpc points consists of the series of local centres of mass $m(u_{\ell})$, $m(u_{\ell+1})$, $\dots$. The procedure starts with $\ell = 0$ from a given point $u = m_0$, which usually is taken as the nearest hit to the energy-weighted centroid of all the hits. Then, it is repeated iteratively until the required number of \lpc points $N_p$ is gained, or it reaches the convergence, i.e., the path length along the curve increases no more. Quantitatively, we say that the algorithm converges if: 
+
+\begin{equation}
+    R = \frac{\lambda_{\ell} - \lambda_{\ell-1}}{\lambda_{\ell} + \lambda_{\ell-1}} < R_{thr}
+\end{equation}
+
+where $\lambda_{\ell} = \lambda_{\ell - 1} + |m(u_{\ell}) - m(u_{\ell -1})|$ and $\lambda_0 = 0$.\\
+The algorithm starts finding the \lpc points in one direction, and when it has reached convergence or the number of points is $\frac{1}{2}N_p$, it restarts in the other direction, changing the sign of $\gamma_{\ell}$.\\
+The parameters chosen for our application are summarized in Tab. \ref{tab:lpc-pars}:
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|}
+    \cline{1-2}
+    \multicolumn{2}{|c|}{\textbf{\lpc parameters}} \\ 
+    \hline
+    \hline
+    $N_p$ & 200   \\ 
+    \hline
+    $R_{thr}$ & $10^{-3}$  \\ 
+    \hline
+    $h$  & 30 mm  \\ 
+    \hline
+    $t$  & 55 mm \\ 
+    \hline
+    $t_{min}$ & 12 mm \\ 
+    \hline
+    \end{tabular}
+    \caption{Parameters of the \lpc algorithm.}
+    \label{tab:lpc-pars}
+\end{table}
+
+As suggested in the paper \cite{LPC-algo}, $N_{max}$ was set to 200, the bandwidth $h$ and the stepsize $t$ were chosen with a similar value, with a larger $t$ since it is penalized by the penalization term. The value of $R_{thr}$ is chosen to prevent the presence of many close \lpc points towards the edges of the track. The minimum step parameter $t_{min}$ is introduced in our application to avoid \lpc points being too close to each other. This means that a point is considered an \say{\lpc point} only if the distance from the previous \lpc point is larger than the minimum step.
+
+We processed each cluster of voxels with the \lpc algorithm. However, we observed that it fails to add \lpc points on the ends of the tracks.
+In order to address this issue, we performed a refinement to the \lpc algorithm. It consists in a reapplication of the \lpc algorithm to the voxel centres where we have no \lpc points. These \say{remaining} voxel centres are selected with the following criterion (see Fig. \ref{fig:lpc-spheres}). Consider an ideal sphere around each \lpc point: if the voxel centre is inside at most two sphere it is reprocessed; otherwise not. Fig. \ref{fig:cluster_ev} showed an event after the application of the discussed algorithms.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{images/chap5/spheres.png}
+    \caption{Simple example of selection criterion for the \lpc refinement.}
+    \label{fig:lpc-spheres}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{images/chap5/ev-dbscan-refinement.png}
+    \caption{CCQE $\mu - p$ event, with two clusters and the noise found by DBSCAN. The red \lpc points come from the first application of the \lpc algorithm; the blue ones from the second application.}
+    \label{fig:cluster_ev}
+\end{figure}
+
+\subsubsection{Hough transform}
+To determine the tracks of the particles, we grouped the \lpc points obtained. At a first approximation, the particles in GRAIN go along a straight track since their curvature radius is not easily appreciable considering the cluster size and the momentum of the particles produced by the neutrino interactions. Hence, we can assign the \lpc points to a particular track by looking for points on the same line, called \say{collinear} points. For this reason, we applied the \textit{Hough transform}.
+
+The Hough transform \cite{Hough-transf} is commonly used in computer vision to find straight lines. This problem was originally solved by Hough \cite{hough-patent} as a collinear-points detection method, and then reframed by Rosenfeld \cite{Rosenfeld-hough-transf} with a mathematically equivalent problem of finding concurrent lines. It is based on the fact that a set of straight lines in a \textit{x--y} plane can be parametrized, with the so-called \textit{normal parametrization}, by the perpendicular distance $\rho$ from the origin and the angle $\theta$ that $\rho$ forms with the horizontal axis, as shown in Fig. \ref{fig:line-xy}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.25]{images/chap5/line-xy.png}
+    \caption{The normal parameters for a line in $x-y$ plane. \cite{Hough-transf}}
+    \label{fig:line-xy}
+\end{figure}
+The line can be described by the following equation: 
+
+\begin{equation}
+    x \cos{\theta} + y \sin{\theta} = \rho.
+\end{equation}
+
+Given a set of points \{$(x_1,y_1), ..., (x_n, y_n)$\}, each set of lines passing through a point $(x_i, y_i)$ corresponds to a sinusoidal curve in the $\theta - \rho$ plane defined by: 
+
+\begin{equation}
+    \rho = x_i \cos{\theta} + y_i \sin{\theta}.
+\end{equation}
+
+Hence, points on the same line share the same values of $\rho$ and $\theta$. This results in the intersection for these ($\rho, \theta$) values between the sinusoidal curves. These parameters define the line that passes through the collinear points\footnote{The point collinearity is defined according to the bin size of the Hough transform.}. If $\theta \in [0,\pi]$ the parameters are unique. 
+
+Practically, this is done by computing a discrete accumulator, that is a 2D array with a fixed resolution on $\theta$ and $\rho$ and dimensions $0 \leq \theta < \pi$ and $-R \leq \rho < R$, where $R$ is the maximum length that $\rho$ can assume. The parameter resolution will affect the outcome: a finer discretization will improve the resolution but, on the other hand, will give problems of clustering entries that correspond to nearly collinear points. \\ For each point ($x_i, y_i$) in the \textit{x--y} plane, the corresponding curve is added to the accumulator by increasing the count in each cell along the curve. This means that a cell records the total number of curves passing through it. Hence, the number of collinear points can be inferred by the counts in a specific cell. 
+
+In this application, the Hough transform algorithm has been applied to the 2D projection of the 3D reconstruction on \textit{z--x} and \textit{z--y} planes for computational reasons. The accumulator has been built with dimensions $0 \leq \theta < \pi$ and $-736 \leq \rho < 736$ and with $\rho$ binning of 36 mm and $\theta$ one of $5^\circ$.\\ The value of $R$ is set to the diagonal of the rectangle formed by the two semiaxes of the GRAIN ellipse.
+
+In the end, we determined the local maxima through the \texttt{peak\_local\_max} function of \textit{scikit--image} package. It slides over the image finding a maximum within a region of ($2 \cdot min\_distance + 1$) if the value of the pixel is higher than a fixed threshold, where \textit{min\_distance} is the minimal allowed distance separating peaks. We chose for our application a \textit{min\_distance} of 7 bins and a threshold equal to $35\%$ of the number of \lpc points. The reason behind this choice is that the number of collinear points strongly depends on the total number of \lpc points. Furthermore, since we are dealing only with two-track events, we imposed a limit of 2 maxima to be found. An example of an accumulator, with the determined maxima is shown in Fig. \ref{fig:accumulator}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{images/chap5/accum_example.pdf}
+    \caption{Example of Hough accumulator, with the points in red corresponding to the maxima.}
+    \label{fig:accumulator}
+\end{figure}
+
+\subsubsection{Track point association and fitting}
+With the values of $\rho$ and $\theta$ found by the Hough transform, we determined the projections of the track candidates in both \textit{z--x} and \textit{z--y} planes. Hence, we tested all the possible combinations (at most 4) of the two projections, in order to match them in the 3D space. As a final step, we associated all the \lpc points distant less than 100 mm from one of the lines to the closest one, forming then the collinear clusters. We chose this distance threshold by looking at the minimum distances of the \lpc points to the closest line of all the events of the sample, shown in Fig. \ref{fig:min-dist-hough-lines} 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/chap5/min_distance_hough_lines.png}
+    \caption{Minimum distance of every \lpc point from the closest ``Hough" line, with the red line at a distance of 45 mm.}
+    \label{fig:min-dist-hough-lines}
+\end{figure}
+
+Once obtained the collinear \lpc points, we applied a least squares linear fit in the 3D space to each collinear cluster with more than 4 \lpc points. This was necessary to possibly improve the fit. 
+
+\subsubsection{Direction reconstruction method}
+From the linear fit we obtained the reconstructed directions of each particle. Since we have always two true tracks, and we have no information on which particle is reconstructed, we assume that the fitted track is the one with the minimum angle.
+
+\section{Analysis}
+We performed the analysis on a selection of CCQE \textit{$\mu$--p} events from ten files produced as output of the simulation chain. From 10 000 generated events, we considered only the CCQE ones with a muon and a proton. Among these, we selected the events with the vertex inside the fiducial volume and with tracks at least 10-cm long. 
+
+We processed all these events with the track finding algorithm. However, we did not detect two tracks for every event. This could be due to the reconstruction of the voxel distribution, which sometimes is not sufficient to allow an optimal application of the \lpc algorithm, but also to the Hough transform, which occasionally struggles to find the track candidates, with a subsequent lack of collinear points associated.
+For this reason, we applied the linear fit only to the collinear clusters with more than 4 \lpc points, as aforementioned. This results in a substantial loss of efficiency.
+
+We reconstructed the directions of all the fitted collinear clusters. Then, we compared it with the MC one, computing the angle, to test the performance of the reconstruction process. The angle difference distribution is presented in Fig. \ref{fig:angle_reco-MC}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/chap5/angle.pdf}
+    \caption{Distribution of the angles between the reconstructed and the MC-truth directions, with the fit line in blue.}
+    \label{fig:angle_reco-MC}
+\end{figure}
+
+Data are fit with a Rayleigh distribution (related with the $\chi^2$ distribution with two degrees of freedom). 
+The best estimate of the Rayleigh scale parameter is  $\sigma = 2.5 ^\circ$ and this corresponds to the angular resolution of the reconstruction process. 
+
+As mentioned earlier, the reconstruction of the \textit{$\mu$--p} vertex is not always possible. Therefore, we evaluated the performance of the reconstruction algorithm by computing the distance between the true vertex and the reconstructed direction. The distribution, shown in Fig. \ref{fig:closest-dist-to-track}, has a most probable value of $19 \pm 1$ mm.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/chap5/distance.pdf}
+    \caption{Closest distance between the true vertex and the reconstructed track, with the fit line in blue.}
+    \label{fig:closest-dist-to-track}
+\end{figure}
+
+Even in those cases where only one track can be reconstructed, the impact parameter with the vertex of the single reconstructed track is reasonably small.
+
+\section{Possible improvements}
+The obtained results in the angular and impact parameter are sufficient to achieve track matching with other SAND subdetectors in terms of resolution. However, the track finding efficiency needs to be improved.
+An insufficient number of \lpc points may result from a non-optimal quality of the reconstructed voxel distribution, since the track of the particle that releases less energy in argon (the muon in most cases) is not always reconstructed in its entirety. 
+The \lpc algorithm as well may not find a number points that well-approximates the track. Improvements can be achieved with systematic studies on the \lpc parameters, possibly eliminating the need for the refinement process.
+Moreover, the Hough transform often struggles to identify the track candidates. Its performance could be improved by moving to a single 3D accumulator in spite of its significant computational cost.
+Another possible improvement can be pursued by a preliminar implementation of a principal component analysis (PCA) that identifies the plane that contains both the tracks. Projecting the event in the plane where it has the maximum width, making the identification through the Hough transform more efficient.

@@ -1,0 +1,10 @@
+As part of the SAND apparatus of the DUNE Near Detector complex, the GRAIN detector will play an important role in the characterization of the neutrino-Ar interactions. In order to perform studies on the feasibility of the GRAIN sub-detector, a detailed reconstruction and simulation chain has been developed.
+
+In this thesis I assessed the performance of a track finding algorithm for the reconstruction of charged-current quasi-elastic interaction in GRAIN, with a muon and a proton in the final state.
+
+First, to deal with the presence of dazzled cameras, caused by scintillation photons emitted between the mask and the sensor, I applied a filtering algorithm to the data to keep only the non-dazzled ones. To this end, I implemented a convolutional neural network. I tested it on $\sim 10^5$ images and it reached a \texttt{F1Score} of $\sim 0.85$. This led to an increase of the purity of the dataset: from an initial value of $p_i = 0.91$ I obtained a final purity of $p_f = 0.98$, substantially reducing then the presence of the dazzled cameras. Further steps can be taken to improve the CNN performance, such as the addition of a third class to represent the intermediate light emission topology.
+
+The most prominent result of this thesis is the study and optimization of the track reconstruction applied to the photon source distribution. The reconstruction is based on a sequence of algorithms which, starting with the application of voxel clustering, and continuing with local principal curve, Hough transform and finally fitting. This allowed me to obtain the direction of the particles with an angular resolution of $2.5 ^\circ$ with respect to the MC truth and an impact parameter less than 20 mm from the true vertex position. 
+
+The obtained results in the angular and impact parameter are sufficient to achieve track matching with other SAND sub-detectors in terms of resolution. Future improvement should focus on the track finding efficiency.
+
